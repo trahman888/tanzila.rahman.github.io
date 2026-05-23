@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Cell,
 } from "recharts";
-import { fetchScholar, scholar as initialScholar } from "../data/scholar";
+import { fetchScholar } from "../data/scholar";
 import type { CitationTotals, PerYearCount, PerYearStats, Scholar, Stats } from "../lib/types";
 import { useEffect, useState } from "react";
 
@@ -23,7 +23,7 @@ const stats: Stats[] = [
 ];
 
 export default function Impact() {
-  const [scholarData, setScholarData] = useState<Scholar>(initialScholar);
+  const [scholarData, setScholarData] = useState<Scholar | null>(null);
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -35,9 +35,9 @@ export default function Impact() {
   }, []);
 
   const scholar = scholarData;
-  const data: PerYearCount[] = scholar.perYear;
+  const data: PerYearCount[] = scholar?.perYear || [];
 
-  return (
+  return scholar ? (
     <section
       id="impact"
       className="py-20 sm:py-28 border-t border-slate-100"
@@ -180,5 +180,5 @@ export default function Impact() {
         </div>
       </div>
     </section>
-  );
+  ) : null;
 }
