@@ -38,9 +38,6 @@ jobs:
           # CRA treats warnings as errors in CI by default; relax that.
           CI: false
 
-      - name: Add 404 fallback (SPA)
-        run: cp build/index.html build/404.html
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
