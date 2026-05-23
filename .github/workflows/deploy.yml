@@ -11,12 +11,17 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
+
+    defaults:
+      run:
+        working-directory: ./
 
     steps:
       - name: Checkout
@@ -44,8 +49,17 @@ jobs:
           path: dist
 
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     needs: build
     runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
