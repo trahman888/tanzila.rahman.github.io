@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -6,8 +7,9 @@ import Publications from "./components/Publications";
 import News from "./components/News";
 import Footer from "./components/Footer";
 import Impact from "./components/Impact";
+import NotFound from "./components/NotFound";
 
-function App() {
+function Home() {
   return (
     <div className="App min-h-screen bg-white text-slate-900 antialiased">
       <Navbar />
@@ -23,4 +25,13 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
