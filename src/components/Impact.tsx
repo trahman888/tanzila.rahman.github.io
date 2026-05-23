@@ -10,9 +10,9 @@ import {
   CartesianGrid,
   Cell,
 } from "recharts";
-import { scholar } from "../data/scholar";
-import type { CitationTotals, PerYearCount, PerYearStats, Stats } from "../lib/types";
-import { useEffect } from "react";
+import { fetchScholar, scholar as initialScholar } from "../data/scholar";
+import type { CitationTotals, PerYearCount, PerYearStats, Scholar, Stats } from "../lib/types";
+import { useEffect, useState } from "react";
 
 const formatNum = (n: number) => n.toLocaleString("en-US");
 
@@ -23,17 +23,19 @@ const stats: Stats[] = [
 ];
 
 export default function Impact() {
-  const data: PerYearCount[] = scholar.perYear;
+  const [scholarData, setScholarData] = useState<Scholar>(initialScholar);
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
-    fetch('/data/citations.json')
-      .then((res) => res.json())
-      .then(json => {
-        console.log("Fetched citation data:", json);
-      })
-      .catch(console.error);
+    fetchScholar()
+      .then(setScholarData)
+      .catch((error) => {
+        console.error("Scholar fetch failed:", error);
+      });
   }, []);
+
+  const scholar = scholarData;
+  const data: PerYearCount[] = scholar.perYear;
 
   return (
     <section
