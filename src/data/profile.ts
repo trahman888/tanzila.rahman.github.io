@@ -37,6 +37,6 @@ export const profile: Profile = {
     googleScholar: "https://scholar.google.com/citations?user=7GKKBLkAAAAJ&hl=en",
     linkedin: "https://www.linkedin.com/in/tanzila-rahman-91414a22/",
     oldSite: "https://sites.google.com/view/tanzila-rahman/home",
-    cv: "./TanzilaRahmanResume.pdf", // add a hosted CV PDF URL when available
+    cv: "", // add a hosted CV PDF URL when available
   },
 };
