@@ -3,19 +3,48 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, FileText, BookOpen, Youtube } from "lucide-react";
 import { publications, publicationCategories } from "../data/publications";
 import { profile } from "../data/profile";
+import { authorsLinks } from "../data/authors";
 import type { Publication } from "../lib/types";
+import { RichText } from "../lib/richText";
 
 const heroName = profile.name;
 
+function setHeroName(str: string) {
+  const re = new RegExp(`(${heroName})`, "gi");
+  return str.replace(re, "*$1*");
+}
+
+function setLinks(str: string) {
+  const parts = [];
+  let lastIndex = 0;
+  const LINK_RE = new RegExp(
+    `(${Object.keys(authorsLinks).join("|")})`,
+    "gi"
+  );
+  let match;
+  while ((match = LINK_RE.exec(str)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(str.slice(lastIndex, match.index));
+    }
+    const [name] = match;
+    const url = authorsLinks[name];
+    if (url) {
+      parts.push(`[${name}](${url})`);
+    } else {
+      parts.push(name);
+    }
+
+    lastIndex = match.index + name.length;
+  }
+  if (lastIndex < str.length) {
+    parts.push(str.slice(lastIndex));
+  }
+  return parts.join("");
+}
+
 // make bold heroname in authors string, if present
 function formatAuthors(authors: string) {
-  const parts = authors.split(new RegExp(`(${heroName})`, "gi"));
-  return parts.map((part, i) => {
-    if (i % 2 === 1) {
-      return <span key={i} className="font-bold">{part}</span>;
-    }
-    return part;
-  });
+  return setHeroName(setLinks(authors));
 }
 
 export default function Publications() {
@@ -76,7 +105,7 @@ export default function Publications() {
                 key={cat}
                 onClick={() => setFilter(cat)}
                 data-testid={`filter-${cat.toLowerCase().replace(/\s+/g, "-")}`}
-                className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+                className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-colors ${
                   isActive
                     ? "bg-slate-900 text-white border-slate-900"
                     : "bg-white text-slate-700 border-slate-200 hover:border-slate-300 hover:text-slate-900"
@@ -122,10 +151,10 @@ export default function Publications() {
                   </div>
 
                   <h3 className="text-base sm:text-lg font-semibold text-slate-900 leading-snug tracking-tight">
-                    {pub.title}
+                    <RichText>{pub.title}</RichText>
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    {formatAuthors(pub.authors)}
+                    <RichText>{formatAuthors(pub.authors)}</RichText>
                   </p>
 
                   {Object.keys(pub.links || {}).length > 0 && (

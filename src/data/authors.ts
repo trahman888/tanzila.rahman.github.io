@@ -1,0 +1,27 @@
+// ascending order of last name, then first name
+
+export const authorsLinks: { [key: string]: string } = {
+  "Purang Abolmaesumi": "https://ece.ubc.ca/purang-abolmaesumi/",
+  "Pengfei Cao": "",
+  "Giuseppe Carenini": "https://scholar.google.com/citations?hl=en&user=HNNL22kAAAAJ",
+  "Shih-Han Chou": "https://shihhanchou.github.io/",
+  "Wan-Cyuan Fan": "https://sites.google.com/view/wancyuanfan",
+  "Xiangteng He": "https://hexiangteng.github.io/",
+  "Robert Laganière": "https://scholar.google.com/citations?hl=en&user=59ohye8AAAAJ",
+  "Hsin-Ying Lee": "https://hsinyinglee.github.io/",
+  "Renjie Liao": "https://lrjconan.github.io/",
+  "Jiayun Luo": "https://sites.google.com/view/jiayunluo/jiayun-luo-letitia",
+  "Shweta Mahajan": "https://s-mahajan.github.io/",
+  "Noman Mohammed": "https://nomanmohd.github.io/",
+  "Md Atiqur Rahman": "https://sites.google.com/view/mdatiqurrahman",
+  "Shuangqun Rao": "",
+  "Jian Ren": "https://alanspike.github.io/",
+  "Mrigank Rochan": "https://mrochan.github.io/",
+  "Leonid Sigal": "https://www.cs.ubc.ca/~lsigal/",
+  "Sergey Tulyakov": "https://stulyakov.com/",
+  "Lyuyang Wang": "",
+  "Yang Wang": "https://kywang.github.io/",
+  "Bicheng Xu": "https://scholar.google.com/citations?hl=en&user=hZhJhmIAAAAJ",
+  "Mengyu Yang": "https://mengyu.page/",
+  "Kwang Moo Yi": "https://www.cs.ubc.ca/~kmyi/",
+};

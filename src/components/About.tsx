@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/profile";
+import { RichText } from "../lib/richText";
 
 export default function About() {
   return (
@@ -31,7 +32,7 @@ export default function About() {
             data-testid="about-bio"
           >
             {profile.about.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}><RichText>{p}</RichText></p>
             ))}
 
             <div className="pt-4 flex flex-wrap gap-2">

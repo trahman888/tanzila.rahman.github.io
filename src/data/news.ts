@@ -28,7 +28,7 @@ export const news: NewsItem[] = [
   {
     date: "May 2024",
     title: "Joined the Vector Institute",
-    description: "Began postdoctoral research at the Vector Institute for AI, working with Profs. Leonid Sigal and Renjie Liao.",
+    description: "Began postdoctoral research at the [Vector Institute for AI](https://vectorinstitute.ai/), working with Profs. [Leonid Sigal](https://www.cs.ubc.ca/~lsigal/) and [Renjie Liao](https://lrjconan.github.io/).",
   },
   {
     date: "2024",

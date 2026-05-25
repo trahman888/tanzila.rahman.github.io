@@ -18,8 +18,8 @@ export const profile: Profile = {
   photo: "https://media.licdn.com/dms/image/v2/D5603AQE6N1pBM5I3Vw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692997521094?e=1780531200&v=beta&t=IONlQUkX4oVnnjtRhX85Eu7qIQzffBHGh4SDjXxQSZY",
   initials: "TR",
   about: [
-    "I am a Senior Research Scientist at Huawei Canada. Previously, I was a postdoctoral researcher at the Vector Institute for AI, working with Professor Leonid Sigal and Professor Renjie Liao.",
-    "I completed my Ph.D. in Computer Science at the University of British Columbia under the supervision of Professor Leonid Sigal. Before that, I obtained my M.Sc. in Computer Science from the University of Manitoba, advised by Professor Yang Wang. I received my B.Sc. in Computer Science and Engineering from Jahangirnagar University, Bangladesh.",
+    "I am a Senior Research Scientist at [Huawei Canada](https://www.huawei.com/ca/). Previously, I was a postdoctoral researcher at the [Vector Institute for AI](https://vectorinstitute.ai/), working with Professor [Leonid Sigal](https://www.cs.ubc.ca/~lsigal/) and Professor [Renjie Liao](https://lrjconan.github.io/).",
+    "I completed my Ph.D. in Computer Science at the [University of British Columbia](https://www.cs.ubc.ca/) under the supervision of Professor [Leonid Sigal](https://www.cs.ubc.ca/~lsigal/). Before that, I obtained my M.Sc. in Computer Science from the [University of Manitoba](https://www.cs.umanitoba.ca/), advised by Professor [Yang Wang](https://www.concordia.ca/faculty/yang-wang.html). I received my B.Sc. in Computer Science and Engineering from [Jahangirnagar University](https://juniv.edu/), Bangladesh.",
     "During my Ph.D., my research focused on multimodal learning in the visual–text–audio domain with limited data (weak / self-supervision). I have also explored generative models in the multimodal space.",
   ],
   researchInterests: [
