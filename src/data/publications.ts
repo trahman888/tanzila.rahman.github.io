@@ -52,7 +52,7 @@ export const publications: Publication[] = [
     venueShort: "CVPR",
     year: 2024,
     category: PublicationCategory.GenerativeAI,
-    image: "https://media.icml.cc/Conferences/CVPR2024/img/homepage_image.jpg",
+    image: "https://s-mahajan.github.io/images/ph2p_2023.png",
     links: {
       arXiv: "https://arxiv.org/pdf/2312.12416",
     },
