@@ -16,7 +16,7 @@ export const publications: Publication[] = [
     venueShort: "ICLR",
     year: 2025,
     category: PublicationCategory.VisionLanguage,
-    image: "https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png",
+    image: "https://lh3.googleusercontent.com/sitesv/AA5AbUBP2GM1id64wlFDk3deUAebXscGGCuv93qeeN65Dd_HUVz0UuzVruePA1B2j5Bi5NH03IaghdWcvbhwITYIj4aqc8n2y9F-cSZ2-lNGjL33DGNE03jL0EzFWp9sxfWJnagIeFKDXsZIvsWuhwKjTdfotPWKuy1-rf-kpSPtuugyd_qjyDGW4OHnhDMEPjhSze_0hZFvBzp_aVuWUpYIOtOHDkhejjFCx9pj=w1280",
     links: {
       arXiv: "https://arxiv.org/abs/2510.08510",
     },
@@ -28,6 +28,7 @@ export const publications: Publication[] = [
     venueShort: "UBC",
     year: 2025,
     category: PublicationCategory.VisionLanguage,
+    image: "images/MMFactory.png",
     links: {
       Project: "https://davidhalladay.github.io/mmfactory_demo/",
     },
@@ -39,7 +40,7 @@ export const publications: Publication[] = [
     venueShort: "CRV",
     year: 2025,
     category: PublicationCategory.GenerativeAI,
-    image: "https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png",
+    image: "images/visual-concept.png",
     links: {
       arXiv: "https://arxiv.org/pdf/2402.11487",
     },
@@ -79,7 +80,7 @@ export const publications: Publication[] = [
     venueShort: "NeurIPS",
     year: 2021,
     category: PublicationCategory.MultimodalLearning,
-    image: "https://neurips.cc/static/core/img/NeurIPS-logo.svg",
+    image: "images/TriBERT.png",
     links: {
       arXiv: "https://arxiv.org/pdf/2110.13412",
     },
@@ -92,7 +93,7 @@ export const publications: Publication[] = [
     venueShort: "ICME (Oral presentation)",
     year: 2021,
     category: PublicationCategory.MultimodalLearning,
-    image: "https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png",
+    image: "images/Weakly-Supervised.png",
     links: {
       arXiv: "https://arxiv.org/abs/2104.02606",
       Video: "https://www.youtube.com/watch?v=ep6vLty85NU",
@@ -105,6 +106,7 @@ export const publications: Publication[] = [
     venueShort: "CVPR Workshop",
     year: 2021,
     category: PublicationCategory.VisionLanguage,
+    image: "images/Visual-Question-Answering.png",
     links: {
       PDF: "https://openaccess.thecvf.com/content/CVPR2021W/MULA/papers/Rahman_An_Improved_Attention_for_Visual_Question_Answering_CVPRW_2021_paper.pdf",
       Video: "https://www.youtube.com/watch?v=5XfwBAxL9SQ",
@@ -118,7 +120,7 @@ export const publications: Publication[] = [
     venueShort: "ICCV",
     year: 2019,
     category: PublicationCategory.MultimodalLearning,
-    image: "https://iccv2019.thecvf.com/images/ICCV19logo_main.png",
+    image: "images/Watch-Listen-and-Tell.png",
     links: {
       arXiv: "https://arxiv.org/abs/1909.09944",
     },
@@ -131,7 +133,7 @@ export const publications: Publication[] = [
     venueShort: "AVSS",
     year: 2019,
     category: PublicationCategory.ComputerVision,
-    image: "https://signalprocessingsociety.org/sites/default/files/styles/blog_large_image/public/AVSS_2019_0.jpg?itok=oMY0QmYF",
+    image: "images/Video-based-Person-Re-identification.png",
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_refine.pdf",
     },
@@ -144,7 +146,7 @@ export const publications: Publication[] = [
     venueShort: "AVSS",
     year: 2019,
     category: PublicationCategory.ComputerVision,
-    image: "https://signalprocessingsociety.org/sites/default/files/styles/blog_large_image/public/AVSS_2019_0.jpg?itok=oMY0QmYF",
+    image: "images/Non-local-Attentive.png",
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_nonlocal.pdf"
     },
@@ -156,7 +158,7 @@ export const publications: Publication[] = [
     venueShort: "ICME",
     year: 2019,
     category: PublicationCategory.ComputerVision,
-    image: "https://www.icme2019.org/wp-content/uploads/2020/11/London-eye.jpg",
+    image: "https://mrochan.github.io/images/icme19_img.png",
     links: {
       arXiv: "https://arxiv.org/abs/1904.04492",
     },
@@ -170,6 +172,7 @@ export const publications: Publication[] = [
     venueShort: "TDP",
     year: 2018,
     category: PublicationCategory.MachineLearning,
+    image: "images/Membership-Inference-Attack.png",
     links: {
       PDF: "http://www.tdp.cat/issues16/tdp.a289a17.pdf",
     },
@@ -181,6 +184,7 @@ export const publications: Publication[] = [
     venueShort: "BMVC",
     year: 2017,
     category: PublicationCategory.ComputerVision,
+    image: "https://mrochan.github.io/images/bmvc17_personid_img.png",
     links: {
       PDF: "http://www.cs.umanitoba.ca/~ywang/papers/bmvc17_personid.pdf",
     },
