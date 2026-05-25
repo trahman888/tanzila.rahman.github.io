@@ -36,10 +36,10 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          if [ -n "$(git status --porcelain src/data/scholar.js)" ]; then
+          if [ -n "$(git status --porcelain public/data/scholar.json)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/data/scholar.js
+            git add public/data/scholar.json
             git commit -m "chore(scholar): refresh citation metrics"
             git push
           else
