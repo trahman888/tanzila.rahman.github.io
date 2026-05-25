@@ -5,7 +5,7 @@ import { publications, publicationCategories } from "../data/publications";
 import { profile } from "../data/profile";
 import { authorsLinks } from "../data/authors";
 import type { Publication } from "../lib/types";
-import { RichText } from "../lib/richText";
+import { RichText, clearRich } from "../lib/richText";
 
 const heroName = profile.name;
 
@@ -14,7 +14,7 @@ function setHeroName(str: string) {
   return str.replace(re, "*$1*");
 }
 
-function setLinks(str: string) {
+function setAuthorLinks(str: string) {
   const parts = [];
   let lastIndex = 0;
   const LINK_RE = new RegExp(
@@ -44,7 +44,7 @@ function setLinks(str: string) {
 
 // make bold heroname in authors string, if present
 function formatAuthors(authors: string) {
-  return setHeroName(setLinks(authors));
+  return setHeroName(setAuthorLinks(authors));
 }
 
 export default function Publications() {
@@ -221,7 +221,7 @@ function PublicationThumb({ pub, idx }: { pub: Publication; idx: number }) {
       >
         <img
           src={pub.image}
-          alt={pub.title}
+          alt={clearRich(pub.title)}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />

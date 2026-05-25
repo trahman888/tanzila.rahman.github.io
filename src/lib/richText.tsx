@@ -89,3 +89,17 @@ export function renderRich(text: React.ReactNode) {
 export function RichText({ children }: PropsWithChildren<{}>) {
   return <>{renderRich(children)}</>;
 }
+
+export function clearLinks(str: string) {
+  // Remove any existing markdown links to avoid conflicts with our own linkification.
+  return str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1");
+}
+
+export function clearBold(str: string) {
+  // Remove existing * for bold to avoid conflicts with hero name formatting.
+  return str.replace(/\*(.*?)\*/g, "$1");
+}
+
+export function clearRich(str: string) {
+  return clearLinks(clearBold(str));
+}
