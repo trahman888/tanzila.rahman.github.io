@@ -90,16 +90,24 @@ export function RichText({ children }: PropsWithChildren<{}>) {
   return <>{renderRich(children)}</>;
 }
 
-export function clearLinks(str: string) {
+export function makeBoldText(str: string) {
+  return `*${str}*`;
+}
+
+export function makeLinkText(label: string, url: string) {
+  return `[${label}](${url})`;
+}
+
+export function clearTextLinks(str: string) {
   // Remove any existing markdown links to avoid conflicts with our own linkification.
   return str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1");
 }
 
-export function clearBold(str: string) {
+export function clearTextBold(str: string) {
   // Remove existing * for bold to avoid conflicts with hero name formatting.
   return str.replace(/\*(.*?)\*/g, "$1");
 }
 
 export function clearRich(str: string) {
-  return clearLinks(clearBold(str));
+  return clearTextLinks(clearTextBold(str));
 }

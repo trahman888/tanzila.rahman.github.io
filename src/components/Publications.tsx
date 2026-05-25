@@ -5,13 +5,13 @@ import { publications, publicationCategories } from "../data/publications";
 import { profile } from "../data/profile";
 import { authorsLinks } from "../data/authors";
 import type { Publication } from "../lib/types";
-import { RichText, clearRich } from "../lib/richText";
+import { RichText, clearRich, makeBoldText, makeLinkText } from "../lib/richText";
 
 const heroName = profile.name;
 
 function setHeroName(str: string) {
   const re = new RegExp(`(${heroName})`, "gi");
-  return str.replace(re, "*$1*");
+  return str.replace(re, makeBoldText("$1"));
 }
 
 function setAuthorLinks(str: string) {
@@ -29,7 +29,7 @@ function setAuthorLinks(str: string) {
     const [name] = match;
     const url = authorsLinks[name];
     if (url) {
-      parts.push(`[${name}](${url})`);
+      parts.push(makeLinkText(name, url));
     } else {
       parts.push(name);
     }
