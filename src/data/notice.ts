@@ -1,4 +1,6 @@
-const notice = {
+import type { Notice } from "../lib/types";
+
+const notice: Notice = {
   id: "1",
   title: "Important notice",
   message:

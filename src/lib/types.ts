@@ -85,3 +85,13 @@ export interface Scholar {
 }
 
 export type Stats = { key: keyof CitationTotals; label: string };
+
+export type Notice = {
+  id: string;
+  title: string;
+  message: string;
+  color: string;
+  startDate: string;
+  endDate: string;
+  pinned: boolean;
+};
