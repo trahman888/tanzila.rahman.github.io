@@ -54,7 +54,7 @@ export const publications: Publication[] = [
     category: PublicationCategory.GenerativeAI,
     image: "https://s-mahajan.github.io/images/ph2p_2023.png",
     links: {
-      arXiv: "https://arxiv.org/pdf/2312.12416",
+      PDF: "https://openaccess.thecvf.com/content/CVPR2024/papers/Mahajan_Prompting_Hard_or_Hardly_Prompting_Prompt_Inversion_for_Text-to-Image_Diffusion_CVPR_2024_paper.pdf",
     },
   },
   {
@@ -66,9 +66,9 @@ export const publications: Publication[] = [
     venueShort: "CVPR",
     year: 2023,
     category: PublicationCategory.GenerativeAI,
-    image: "https://media.icml.cc/Conferences/CVPR2023/img/CVPR2023_homepage_picture.jpg",
+    image: "https://s-mahajan.github.io/images/cvpr_2023.png",
     links: {
-      arXiv: "https://arxiv.org/pdf/2211.13319",
+      PDF: "https://openaccess.thecvf.com/content/CVPR2023/papers/Rahman_Make-a-Story_Visual_Memory_Conditioned_Consistent_Story_Generation_CVPR_2023_paper.pdf",
       Video: "https://www.youtube.com/watch?v=BXZ7LAg1sP8&t=58s",
     },
   },
