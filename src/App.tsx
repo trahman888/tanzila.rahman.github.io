@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import NoticeBar from "./components/NoticeBar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Publications from "./components/Publications";
@@ -12,6 +13,7 @@ import NotFound from "./components/NotFound";
 function Home() {
   return (
     <div className="App min-h-screen bg-white text-slate-900 antialiased">
+      <NoticeBar />
       <Navbar />
       <main>
         <Hero />
