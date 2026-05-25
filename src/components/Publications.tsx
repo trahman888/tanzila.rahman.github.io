@@ -5,7 +5,8 @@ import { publications, publicationCategories } from "../data/publications";
 import { profile } from "../data/profile";
 import { authorsLinks } from "../data/authors";
 import type { Publication } from "../lib/types";
-import { RichText, clearRich, makeBoldText, makeLinkText } from "../lib/richText";
+import { clearRich, makeBoldText, makeLinkText } from "../lib/richTextUtils";
+import { RichText } from "./ui/RichText";
 
 const heroName = profile.name;
 

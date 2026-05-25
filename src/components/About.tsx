@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/profile";
-import { RichText } from "../lib/richText";
+import { RichText } from "./ui/RichText";
 
 export default function About() {
   return (

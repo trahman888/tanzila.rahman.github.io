@@ -1,37 +1,22 @@
-// Tiny inline-link renderer for content stored in data files.
-//
-// Supported syntax in any data-file string:
-//   "I worked with [Leonid Sigal](https://www.cs.ubc.ca/~lsigal/) at UBC."
-//
-// Internal links (starting with "/" or "#") render as same-tab anchors.
-// External links (http/https/mailto/tel) open in a new tab.
-//
-// Usage:
-//   import { RichText } from "../lib/richText";
-//   <p><RichText>{profile.about[0]}</RichText></p>
-
 import React from "react";
-import type { PropsWithChildren } from "react";
 
 const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 const BOLD_RE = /\*(.*?)\*/g;
 
-const LINK_CLASS =
+export const LINK_CLASS =
   "text-slate-900 underline underline-offset-4 decoration-slate-300 hover:decoration-slate-900 transition-colors";
 
-function isExternal(url: string) {
+export function isExternal(url: string) {
   return (
-    /^https?:\/\//i.test(url) ||
-    url.startsWith("mailto:") ||
-    url.startsWith("tel:")
+    /^https?:\/\//i.test(url) || url.startsWith("mailto:") || url.startsWith("tel:")
   );
 }
 
-function boldify(text: string) {
-  const parts = [];
+export function boldify(text: string) {
+  const parts: Array<React.ReactNode> = [];
   let lastIndex = 0;
   let key = 0;
-  let match;
+  let match: RegExpExecArray | null;
   while ((match = BOLD_RE.exec(text)) !== null) {
     if (match.index > lastIndex) {
       parts.push(text.slice(lastIndex, match.index));
@@ -48,11 +33,11 @@ function boldify(text: string) {
   return parts;
 }
 
-function linkify(text: string) {
-  const parts = [];
+export function linkify(text: string) {
+  const parts: Array<React.ReactNode> = [];
   let lastIndex = 0;
   let key = 0;
-  let match;
+  let match: RegExpExecArray | null;
   while ((match = LINK_RE.exec(text)) !== null) {
     if (match.index > lastIndex) {
       parts.push(text.slice(lastIndex, match.index));
@@ -75,7 +60,7 @@ function linkify(text: string) {
   return parts;
 }
 
-export function renderRich(text: React.ReactNode) {
+export function renderRich(text: React.ReactNode): React.ReactNode {
   if (text === null || text === undefined) return null;
   const str = String(text);
   return linkify(str).flatMap((part) => {
@@ -84,10 +69,6 @@ export function renderRich(text: React.ReactNode) {
     }
     return part;
   });
-}
-
-export function RichText({ children }: PropsWithChildren<{}>) {
-  return <>{renderRich(children)}</>;
 }
 
 export function makeBoldText(str: string) {
