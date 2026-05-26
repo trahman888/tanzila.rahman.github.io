@@ -1,3 +1,13 @@
+
+/* Ensure links inside the notice bar inherit the white color */
+.notice-bar a {
+  color: inherit;
+  text-decoration: underline;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
 .App {
   text-align: left;
 }

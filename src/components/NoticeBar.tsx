@@ -1,5 +1,6 @@
 import { useState } from "react";
 import notice from "../data/notice";
+import { RichText } from "./ui/RichText";
 
 export default function NoticeBar() {
   const [visible, setVisible] = useState(() => {
@@ -11,8 +12,14 @@ export default function NoticeBar() {
       const inRange = (!start || now >= start) && (!end || now <= end);
       const dismissedKey = `noticeDismissed:${notice.id}`;
       const dismissedTime = localStorage.getItem(dismissedKey);
-      const dismissedDate = dismissedTime ? new Date(dismissedTime) : null; 
-      const dismissed = dismissedDate && start && end ? dismissedDate >= start && dismissedDate <= end : false;
+      const dismissedDate = dismissedTime ? new Date(dismissedTime) : null;
+      // dismissed for only one day from dismissal time
+      let dismissed = false;
+      if (dismissedDate) {
+        const oneDayMs = 24 * 60 * 60 * 1000;
+        const expire = new Date(dismissedDate.getTime() + oneDayMs);
+        dismissed = new Date() <= expire;
+      }
       return inRange && !dismissed;
     } catch {
       return false;
@@ -32,14 +39,14 @@ export default function NoticeBar() {
 
   return (
     <div
-      className="sticky top-0 z-50 text-white flex items-center justify-between gap-4 px-4 py-2 shadow-md"
+      className="notice-bar sticky top-0 z-50 text-white flex items-center justify-between gap-4 px-4 py-2 shadow-md"
       style={{ backgroundColor: notice.color || "#dc2626" }}
       role="region"
       aria-live="polite"
     >
       <div className="flex items-center gap-3">
         <strong className="font-semibold">{notice.title}</strong>
-        <span className="opacity-95">{notice.message}</span>
+        <p className="opacity-95"><RichText>{notice.message}</RichText></p>
       </div>
       <button
         className="text-white bg-transparent text-lg p-1 hover:opacity-90 focus:outline-none"
