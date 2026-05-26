@@ -85,22 +85,32 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-slate-500">
+        <footer className="mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>
           <p>
-            Built with React &amp; Tailwind ·{" "}
+            Built by{' '}
+            <a
+              href="https://miraz235.github.io"
+              target="_blank"
+              rel="noreferrer"
+              title="Asraful Karim's personal website"
+              className="text-slate-400 hover:text-slate-200 transition-colors"
+            >
+              <img src="https://miraz235.github.io/favicon.svg" alt="Asraful Karim" className="inline w-5 h-5 hover:scale-110 mr-1 opacity-75 hover:opacity-100 transition-opacity" />
+            </a>{' '}&nbsp;
+            &bull;&nbsp;{' '}
             <a
               href={profile.links.oldSite}
               target="_blank"
               rel="noreferrer"
               className="text-slate-400 hover:text-slate-200 transition-colors"
             >
-              Previous site
+              My previous site
             </a>
           </p>
-        </div>
+        </footer>
       </div>
     </section>
   );

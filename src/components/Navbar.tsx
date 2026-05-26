@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Maximize2, Minimize2 } from "lucide-react";
 import { profile } from "../data/profile";
 
 const SECTIONS: { id: string; label: string }[] = [
@@ -11,6 +12,13 @@ const SECTIONS: { id: string; label: string }[] = [
 export default function Navbar() {
   const [active, setActive] = useState("about");
   const [open, setOpen] = useState(false);
+  const [compressed, setCompressed] = useState(() => {
+    try {
+      return localStorage.getItem("siteCompressed") === "1";
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,6 +35,22 @@ export default function Navbar() {
     });
     return () => observer.disconnect();
   }, []);
+
+  // apply compressed class to root element when changed
+  useEffect(() => {
+    try {
+      const root = document.documentElement;
+      if (compressed) {
+        root.classList.add("compressed");
+        localStorage.setItem("siteCompressed", "1");
+      } else {
+        root.classList.remove("compressed");
+        localStorage.removeItem("siteCompressed");
+      }
+    } catch {
+      // ignore
+    }
+  }, [compressed]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -72,6 +96,14 @@ export default function Navbar() {
               )}
             </button>
           ))}
+          <button
+            onClick={() => setCompressed((c) => !c)}
+            className="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200"
+            aria-pressed={compressed}
+            title={compressed ? "Disable compact view" : "Enable compact view"}
+          >
+            {compressed ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
+          </button>
         </nav>
 
         <button
