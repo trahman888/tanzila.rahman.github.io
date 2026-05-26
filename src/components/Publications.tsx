@@ -129,7 +129,7 @@ export default function Publications() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.3, delay: idx * 0.03 }}
-                className="group flex flex-col sm:flex-row gap-5 sm:gap-6 border border-slate-200 bg-white rounded-xl p-5 sm:p-6 hover:border-slate-300 hover:-translate-y-[1px] transition-all duration-200"
+                className="publication-card group relative flex flex-col sm:flex-row gap-5 sm:gap-6 border border-slate-200 bg-white rounded-xl p-5 sm:p-6 hover:border-slate-300 hover:-translate-y-[1px] transition-all duration-200"
                 data-testid={`publication-card-${idx}`}
               >
                 <PublicationThumb pub={pub} idx={idx} />
@@ -159,7 +159,7 @@ export default function Publications() {
                   </p>
 
                   {Object.keys(pub.links || {}).length > 0 && (
-                    <div className="flex flex-wrap items-center gap-2 mt-2">
+                    <div className="pub-links flex flex-wrap items-center gap-2 mt-2">
                       {Object.entries(pub.links).map(([label, url]) => (
                         <a
                           key={label}
@@ -217,7 +217,7 @@ function PublicationThumb({ pub, idx }: { pub: Publication; idx: number }) {
   if (pub.image) {
     return (
       <div
-        className="relative w-full sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-[16/9] sm:aspect-square flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
+        className="pub-thumb relative w-full sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-[16/9] sm:aspect-square flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
         data-testid={`pub-thumb-${idx}`}
       >
         <img
@@ -247,7 +247,7 @@ function PublicationThumb({ pub, idx }: { pub: Publication; idx: number }) {
 
   return (
     <div
-      className="relative w-full sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-[16/9] sm:aspect-square flex-shrink-0 overflow-hidden rounded-lg border border-slate-200"
+      className="pub-thumb relative w-full sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-[16/9] sm:aspect-square flex-shrink-0 overflow-hidden rounded-lg border border-slate-200"
       style={{
         backgroundImage: `linear-gradient(135deg, ${p.from} 0%, ${p.to} 100%)`,
       }}
