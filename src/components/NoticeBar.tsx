@@ -10,7 +10,9 @@ export default function NoticeBar() {
       const end = notice.endDate ? new Date(notice.endDate) : null;
       const inRange = (!start || now >= start) && (!end || now <= end);
       const dismissedKey = `noticeDismissed:${notice.id}`;
-      const dismissed = !!localStorage.getItem(dismissedKey);
+      const dismissedTime = localStorage.getItem(dismissedKey);
+      const dismissedDate = dismissedTime ? new Date(dismissedTime) : null; 
+      const dismissed = dismissedDate && start && end ? dismissedDate >= start && dismissedDate <= end : false;
       return inRange && !dismissed;
     } catch {
       return false;
@@ -21,7 +23,7 @@ export default function NoticeBar() {
 
   const handleClose = () => {
     try {
-      localStorage.setItem(`noticeDismissed:${notice.id}`, "1");
+      localStorage.setItem(`noticeDismissed:${notice.id}`, new Date().toISOString());
     } catch {
       // ignore storage errors
     }

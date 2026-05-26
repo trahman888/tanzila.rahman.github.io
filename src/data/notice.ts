@@ -8,7 +8,7 @@ const notice: Notice = {
   color: "#dc2626", // default red (can be changed)
   // ISO date-range when the notice should be visible (UTC)
   startDate: "2026-04-01T00:00:00Z",
-  endDate: "2026-05-30T23:59:59Z",
+  endDate: "2026-04-30T23:59:59Z",
   pinned: true,
 };
 
