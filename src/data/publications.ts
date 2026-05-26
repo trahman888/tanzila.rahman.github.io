@@ -16,7 +16,7 @@ export const publications: Publication[] = [
     venueShort: "ICLR",
     year: 2025,
     category: PublicationCategory.VisionLanguage,
-    image: "https://lh3.googleusercontent.com/sitesv/AA5AbUAKpys_3WLmUBnT5rFuey0vMiIfmkyUMArdmwk22YNIKiDoC7IIFY-LMlDa4jsiTc-J4pfnfxtCY2AYhrPk48AWFL46xnFFsczpnPf5bL6PQZst99kuFaxJ3b8Y8vonPZmoI-QRFwZnL-s08OC8NJFUOgEp7v-En3Fjk09A_zRefTZcHf6OA9E2zCg99aILZSgy-aJCv_QiGLrUjc-lcPCktw2plt3wcg8w-_E=w1280",
+    image: "images/To-Sink-or-Not-to-Sink.png",
     links: {
       arXiv: "https://arxiv.org/abs/2510.08510",
     },
