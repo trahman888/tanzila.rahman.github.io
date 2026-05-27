@@ -15,7 +15,7 @@ export const profile: Profile = {
     { role: "B.Sc., Computer Science & Engineering", org: "Jahangirnagar University" },
   ],
   // Replace with a hosted photo URL when ready (e.g. /profile.jpg in /public).
-  photo: "https://media.licdn.com/dms/image/v2/D5603AQE6N1pBM5I3Vw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692997521094?e=1780531200&v=beta&t=IONlQUkX4oVnnjtRhX85Eu7qIQzffBHGh4SDjXxQSZY",
+  photo: "images/TanzilaRahman.png",
   initials: "TR",
   about: [
     "I am a Senior Research Scientist at [Huawei Canada](https://www.huawei.com/ca/). Previously, I was a postdoctoral researcher at the [Vector Institute for AI](https://vectorinstitute.ai/), working with Professor [Leonid Sigal](https://www.cs.ubc.ca/~lsigal/) and Professor [Renjie Liao](https://lrjconan.github.io/).",
