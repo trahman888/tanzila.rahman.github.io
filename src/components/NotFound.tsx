@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Home } from "lucide-react";
-import { profile } from "../data/profile";
+import { profile } from "../data";
 
 export default function NotFound() {
   useEffect(() => {

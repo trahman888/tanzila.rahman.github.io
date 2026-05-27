@@ -1,6 +1,6 @@
 import type { Notice } from "../lib/types";
 
-const notice: Notice = {
+export const notice: Notice = {
   id: "1",
   title: "Important notice",
   message:
@@ -12,4 +12,3 @@ const notice: Notice = {
   pinned: true,
 };
 
-export default notice;

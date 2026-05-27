@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { profile } from "../data/profile";
+import { profile } from "../data";
 import { RichText } from "./ui/RichText";
 
 export default function About() {

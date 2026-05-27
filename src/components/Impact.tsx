@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   Cell,
 } from "recharts";
-import { fetchScholar } from "../data/scholar";
+import { fetchScholar } from "../data";
 import type { CitationTotals, PerYearCount, PerYearStats, Scholar, Stats } from "../lib/types";
 import { useEffect, useState } from "react";
 

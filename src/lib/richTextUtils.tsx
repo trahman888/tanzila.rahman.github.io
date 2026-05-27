@@ -1,5 +1,3 @@
-import React from "react";
-
 const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 const BOLD_RE = /\*(.*?)\*/g;
 
@@ -58,17 +56,6 @@ export function linkify(text: string) {
   }
   if (lastIndex < text.length) parts.push(text.slice(lastIndex));
   return parts;
-}
-
-export function renderRich(text: React.ReactNode): React.ReactNode {
-  if (text === null || text === undefined) return null;
-  const str = String(text);
-  return linkify(str).flatMap((part) => {
-    if (typeof part === "string") {
-      return boldify(part);
-    }
-    return part;
-  });
 }
 
 export function makeBoldText(str: string) {

@@ -2,8 +2,7 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, FileText, BookOpen, Youtube } from "lucide-react";
 import { publications, publicationCategories } from "../data/publications";
-import { profile } from "../data/profile";
-import { authorsLinks } from "../data/authors";
+import { profile, authorsLinks } from "../data";
 import type { Publication } from "../lib/types";
 import { clearRich, makeBoldText, makeLinkText } from "../lib/richTextUtils";
 import { RichText } from "./ui/RichText";
@@ -121,7 +120,12 @@ export default function Publications() {
         {/* List */}
         <div className="mt-10 flex flex-col gap-4">
           <AnimatePresence mode="popLayout">
-            {filtered.map((pub, idx) => (
+            {filtered.map((pub, idx) => {
+              const firstAuthor = (pub.authors || "").split(",")[0].trim();
+              const isFirstAuthor =
+                firstAuthor.toLowerCase() === profile.name.toLowerCase();
+
+              return (
               <motion.article
                 layout
                 key={`${pub.title}-${pub.year}`}
@@ -129,7 +133,11 @@ export default function Publications() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.3, delay: idx * 0.03 }}
-                className="publication-card group relative flex flex-col sm:flex-row gap-5 sm:gap-6 border border-slate-200 bg-white rounded-xl p-5 sm:p-6 hover:border-slate-300 hover:-translate-y-[1px] transition-all duration-200"
+                className={`publication-card group relative flex flex-col sm:flex-row gap-5 sm:gap-6 border bg-white rounded-xl p-5 sm:p-6 hover:-translate-y-[1px] transition-all duration-200 ${
+                  isFirstAuthor
+                    ? "border-amber-300 sm:border-l-4 sm:border-t-0 sm:border-r-0 sm:border-b-0"
+                    : "border-slate-200 hover:border-slate-300"
+                }`}
                 data-testid={`publication-card-${idx}`}
               >
                 <PublicationThumb pub={pub} idx={idx} />
@@ -143,6 +151,11 @@ export default function Publications() {
                     >
                       {pub.venueShort}
                     </span>
+                    {isFirstAuthor && (
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-100 text-amber-800">
+                        First author
+                      </span>
+                    )}
                     <span className="text-xs text-slate-500 font-medium">
                       {pub.year}
                     </span>
@@ -185,7 +198,8 @@ export default function Publications() {
                   )}
                 </div>
               </motion.article>
-            ))}
+            );
+            })}
           </AnimatePresence>
 
           {filtered.length === 0 && (

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, GraduationCap } from "lucide-react";
-import { profile } from "../data/profile";
+import { profile } from "../data";
 
 export default function Footer() {
   return (

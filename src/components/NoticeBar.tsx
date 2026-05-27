@@ -1,5 +1,5 @@
 import { useState } from "react";
-import notice from "../data/notice";
+import { notice } from "../data";
 import { RichText } from "./ui/RichText";
 
 export default function NoticeBar() {

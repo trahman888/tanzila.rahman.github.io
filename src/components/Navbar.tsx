@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
-import { profile } from "../data/profile";
+import { profile } from "../data";
 
 const SECTIONS: { id: string; label: string }[] = [
   { id: "about", label: "About" },

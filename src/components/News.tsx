@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { news } from "../data/news";
+import { news } from "../data";
 import { RichText } from "./ui/RichText";
 
 export default function News() {

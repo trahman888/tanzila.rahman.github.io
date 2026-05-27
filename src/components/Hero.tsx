@@ -1,6 +1,6 @@
 import { motion, type MotionNodeAnimationOptions } from "framer-motion";
 import { Mail, Linkedin, GraduationCap, FileText, ArrowDown } from "lucide-react";
-import { profile } from "../data/profile";
+import { profile } from "../data";
 
 const fade = (delay = 0): MotionNodeAnimationOptions => ({
   initial: { opacity: 0, y: 16 },
