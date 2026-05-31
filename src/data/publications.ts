@@ -1,9 +1,3 @@
-// Add or edit publications here. Each entry renders as a publication card.
-// Categories are used for the filter chips on the Research page.
-//
-// Optional `image` field: a hosted URL (or /something.jpg in /public).
-// If empty, a tasteful venue-themed placeholder is shown instead.
-
 import { PublicationCategory, type Publication } from "../lib/types";
 
 export const publications: Publication[] = [
@@ -42,7 +36,7 @@ export const publications: Publication[] = [
     category: PublicationCategory.GenerativeAI,
     image: "images/visual-concept.png",
     links: {
-      arXiv: "https://arxiv.org/pdf/2402.11487",
+      arXiv: "https://arxiv.org/abs/2402.11487",
     },
   },
   {
@@ -82,7 +76,7 @@ export const publications: Publication[] = [
     category: PublicationCategory.MultimodalLearning,
     image: "images/TriBERT.png",
     links: {
-      arXiv: "https://arxiv.org/pdf/2110.13412",
+      arXiv: "https://arxiv.org/abs/2110.13412",
     },
   },
   {
