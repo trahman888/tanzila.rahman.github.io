@@ -1,10 +1,10 @@
 {
   "profileUrl": "https://scholar.google.com/citations?user=7GKKBLkAAAAJ&hl=en",
   "totals": {
-    "citations": 1037,
+    "citations": 1042,
     "citationsSince": {
       "year": 2022,
-      "value": 848
+      "value": 854
     },
     "hIndex": 11,
     "hIndexSince": {
@@ -68,11 +68,11 @@
     },
     {
       "year": 2025,
-      "count": 200
+      "count": 198
     },
     {
       "year": 2026,
-      "count": 70
+      "count": 78
     }
   ]
 }
