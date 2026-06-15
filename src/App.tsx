@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import ReactGA from "react-ga4";
+
 import "./App.css";
 import Navbar from "./components/Navbar";
 import NoticeBar from "./components/NoticeBar";
@@ -11,21 +13,41 @@ import News from "./components/News";
 import Footer from "./components/Footer";
 import Impact from "./components/Impact";
 import NotFound from "./components/NotFound";
+import { fetchSchema } from "./data";
 
 function Home() {
+  const [schemaData, setSchemaData] = useState<object | null>(null);
+  
+  useEffect(() => {
+    fetchSchema()
+      .then(setSchemaData)
+      .catch((error) => {
+        console.error("Schema fetch failed:", error);
+      });
+  }, []);
+
   return (
-    <div className="App min-h-screen bg-white text-slate-900 antialiased">
-      <NoticeBar />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Impact />
-        <Publications />
-        <News />
-        <Footer />
-      </main>
-    </div>
+    <>
+      {schemaData && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(schemaData)}
+          </script>
+        </Helmet>
+      )}
+      <div className="App min-h-screen bg-white text-slate-900 antialiased">
+        <NoticeBar />
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Impact />
+          <Publications />
+          <News />
+          <Footer />
+        </main>
+      </div>
+    </>
   );
 }
 
