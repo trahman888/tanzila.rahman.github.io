@@ -96,3 +96,27 @@ export type Notice = {
   endDate: string;
   pinned: boolean;
 };
+
+interface OrganizationSchema {
+  "@type": "Organization";
+  name: string;
+}
+
+interface EducationalOrganizationSchema {
+  "@type": "EducationalOrganization";
+  name: string;
+  description?: string;
+}
+
+export interface PersonSchema {
+  "@context": "https://schema.org";
+  "@type": "Person";
+  name: string;
+  jobTitle?: string;
+  url?: string;
+  sameAs?: (string | undefined)[];
+  image?: string;
+  worksFor?: OrganizationSchema;
+  alumniOf?: EducationalOrganizationSchema[];
+  knowsAbout?: string[];
+}

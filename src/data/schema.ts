@@ -1,3 +1,4 @@
+import type { PersonSchema } from "../lib/types";
 import { profile } from "./profile";
 
 export function generateSchema() {
@@ -6,7 +7,7 @@ export function generateSchema() {
   // Map your custom TypeScript structures to standard Schema.org specifications
   const currentAffiliation = profile.affiliations.find(a => a.current) || profile.affiliations[0];
   const educationHistory = profile.affiliations.filter(a => a.role.includes('Ph.D.') || a.role.includes('M.Sc.') || a.role.includes('B.Sc.'));
-  const schemaData = {
+  const schemaData: PersonSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": profile.name,

@@ -14,9 +14,10 @@ import Footer from "./components/Footer";
 import Impact from "./components/Impact";
 import NotFound from "./components/NotFound";
 import { generateSchema } from "./data";
+import type { PersonSchema } from "./lib/types";
 
 function Home() {
-  const [schemaData, setSchemaData] = useState<object | null>(null);
+  const [schemaData, setSchemaData] = useState<PersonSchema | null>(null);
   
   useEffect(() => {
     const schema = generateSchema(); // Generate the schema data dynamically
