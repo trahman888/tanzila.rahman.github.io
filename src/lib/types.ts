@@ -11,6 +11,7 @@ export interface Profile {
   name: string;
   title: string;
   institution: string;
+  url: string;
   affiliations: Affiliation[];
   photo: string;
   initials: string;

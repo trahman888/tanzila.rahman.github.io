@@ -6,6 +6,7 @@ import { PublicationCategory, type Profile } from "../lib/types";
 export const profile: Profile = {
   name: "Tanzila Rahman",
   title: "Senior Research Scientist",
+  url: "https://trahman888.github.io/",
   institution: "Huawei Canada",
   affiliations: [
     { role: "Senior Research Scientist", org: "Huawei Canada", current: true },

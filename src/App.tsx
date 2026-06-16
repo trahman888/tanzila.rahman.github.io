@@ -13,17 +13,14 @@ import News from "./components/News";
 import Footer from "./components/Footer";
 import Impact from "./components/Impact";
 import NotFound from "./components/NotFound";
-import { fetchSchema } from "./data";
+import { generateSchema } from "./data";
 
 function Home() {
   const [schemaData, setSchemaData] = useState<object | null>(null);
   
   useEffect(() => {
-    fetchSchema()
-      .then(setSchemaData)
-      .catch((error) => {
-        console.error("Schema fetch failed:", error);
-      });
+    const schema = generateSchema(); // Generate the schema data dynamically
+    setSchemaData(schema);
   }, []);
 
   return (
