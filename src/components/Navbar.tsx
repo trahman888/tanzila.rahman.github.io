@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { profile } from "../data";
 import { Link, useLocation } from "react-router-dom";
@@ -29,16 +29,21 @@ export default function Navbar({ page }: { page?: string }) {
       const top = el.getBoundingClientRect().top + window.scrollY - 40;
       window.scrollTo({ top, behavior: "smooth" });
     }
-    setOpen(false);
   }, []);
 
   // get hash id from url and set to scroll to that section, otherwise scroll to top
-  useLayoutEffect(() => {
+  useEffect(() => {
     const hash = loc.hash.slice(1);
+
     if (hash) {
-      scrollTo(hash);
+      // A small timeout ensures elements are rendered and heights are calculated
+      const timer = setTimeout(() => scrollTo(hash), 100);
+      return () => clearTimeout(timer);
+    } else {
+      // Fulfills your comment requirement: scroll to top if no hash
+      scrollTo('top');
     }
-  }, [loc, scrollTo]);
+  }, [loc.hash, scrollTo]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,8 +77,6 @@ export default function Navbar({ page }: { page?: string }) {
     }
   }, [compressed]);
 
-  const researchSection = SECTIONS.find((s) => s.id === "research");
-
   return (
     <header
       className="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/80 border-b border-slate-200"
@@ -81,7 +84,10 @@ export default function Navbar({ page }: { page?: string }) {
     >
       <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between">
         <button
-          onClick={() => scrollTo("top")}
+          onClick={() => {
+            scrollTo("top");
+            setOpen(false);
+          }}
           className="text-sm font-semibold tracking-tight text-slate-900 hover:text-slate-700 transition-colors"
           data-testid="nav-home-link"
         >
@@ -95,11 +101,14 @@ export default function Navbar({ page }: { page?: string }) {
           {page !== "publication" ? SECTIONS.map((s) => (
             <button
               key={s.id}
-              onClick={() => scrollTo(s.id)}
+              onClick={() => {
+                scrollTo(s.id);
+                setOpen(false);
+              }}
               data-testid={`nav-${s.id}-link`}
               className={`text-sm font-medium transition-colors ${active === s.id
-                  ? "text-slate-900"
-                  : "text-slate-500 hover:text-slate-900"
+                ? "text-slate-900"
+                : "text-slate-500 hover:text-slate-900"
                 }`}
             >
               {s.label}
@@ -148,7 +157,10 @@ export default function Navbar({ page }: { page?: string }) {
             {page !== "publication" ? SECTIONS.map((s) => (
               <button
                 key={s.id}
-                onClick={() => scrollTo(s.id)}
+                onClick={() => {
+                  scrollTo(s.id);
+                  setOpen(false);
+                }}
                 data-testid={`nav-mobile-${s.id}-link`}
                 className={`text-left py-3 text-sm font-medium border-b border-slate-100 last:border-0 ${active === s.id ? "text-slate-900" : "text-slate-600"
                   }`}

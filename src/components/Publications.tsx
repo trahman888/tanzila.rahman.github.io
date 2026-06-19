@@ -69,8 +69,8 @@ export default function Publications() {
                 onClick={() => setFilter(cat)}
                 data-testid={`filter-${cat.toLowerCase().replace(/\s+/g, "-")}`}
                 className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-colors ${isActive
-                    ? "bg-slate-900 text-white border-slate-900"
-                    : "bg-white text-slate-700 border-slate-200 hover:border-slate-300 hover:text-slate-900"
+                  ? "bg-slate-900 text-white border-slate-900"
+                  : "bg-white text-slate-700 border-slate-200 hover:border-slate-300 hover:text-slate-900"
                   }`}
               >
                 {cat}
@@ -94,8 +94,8 @@ export default function Publications() {
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.3, delay: idx * 0.03 }}
                   className={`publication-card group relative flex flex-col sm:flex-row gap-5 sm:gap-6 border bg-white rounded-xl p-5 sm:p-6 hover:-translate-y-[1px] transition-all duration-200 ${hasFirstAuthor
-                      ? "border-amber-300 sm:border-l-4 sm:border-t-0 sm:border-r-0 sm:border-b-0"
-                      : "border-slate-200 hover:border-slate-300"
+                    ? "border-amber-300 sm:border-l-4 sm:border-t-0 sm:border-r-0 sm:border-b-0"
+                    : "border-slate-200 hover:border-slate-300"
                     }`}
                   data-testid={`publication-card-${idx}`}
                 >

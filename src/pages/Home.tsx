@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "../components/Navbar";
 import NoticeBar from "../components/NoticeBar";
@@ -13,13 +12,8 @@ import { generateSchema } from "../data";
 import { getFirstAuthorPublications } from "../lib/utils";
 
 export default function Home() {
-  const [schemaData, setSchemaData] = useState<PersonSchema | null>(null);
+  const schemaData = generateSchema() as PersonSchema;
   const publications = getFirstAuthorPublications();
-
-  useEffect(() => {
-    const schema = generateSchema(); // Generate the schema data dynamically
-    setSchemaData(schema);
-  }, []);
 
   return (
     <>

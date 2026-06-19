@@ -50,7 +50,7 @@ export const getPublicationById = (publicationId: string): Publication | null =>
 };
 
 export const getFirstAuthor = (publication: Publication | null) => {
- return publication?.authors.split(",")[0].trim() || "";
+  return publication?.authors.split(",")[0].trim() || "";
 };
 
 export const isFirstAuthor = (publication: Publication | null) => {

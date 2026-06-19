@@ -90,7 +90,11 @@ export interface PublicationPageContent {
     title: string;
     description: string;
   };
-  header?: any; // can be further typed if needed
+  header?: {
+    title: string;
+    tagline?: string;
+    paper?: string;
+  };
   sections?: PublicationSection[];
   footer?: {
     text: string;
