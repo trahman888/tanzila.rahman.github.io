@@ -2,50 +2,11 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, FileText, BookOpen, Youtube } from "lucide-react";
 import { publications, publicationCategories } from "../data/publications";
-import { profile, authorsLinks } from "../data";
 import type { Publication } from "../lib/types";
-import { clearRich, makeBoldText, makeLinkText } from "../lib/richTextUtils";
+import { clearRich, clearTextLinks } from "../lib/richTextUtils";
 import { RichText } from "./ui/RichText";
-
-const heroName = profile.name;
-
-function setHeroName(str: string) {
-  const re = new RegExp(`(${heroName})`, "gi");
-  return str.replace(re, makeBoldText("$1"));
-}
-
-function setAuthorLinks(str: string) {
-  const parts = [];
-  let lastIndex = 0;
-  const LINK_RE = new RegExp(
-    `(${Object.keys(authorsLinks).join("|")})`,
-    "gi"
-  );
-  let match;
-  while ((match = LINK_RE.exec(str)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(str.slice(lastIndex, match.index));
-    }
-    const [name] = match;
-    const url = authorsLinks[name];
-    if (url) {
-      parts.push(makeLinkText(name, url));
-    } else {
-      parts.push(name);
-    }
-
-    lastIndex = match.index + name.length;
-  }
-  if (lastIndex < str.length) {
-    parts.push(str.slice(lastIndex));
-  }
-  return parts.join("");
-}
-
-// make bold heroname in authors string, if present
-function formatAuthors(authors: string) {
-  return setHeroName(setAuthorLinks(authors));
-}
+import { Link } from "react-router-dom";
+import { formatAuthors, isAllowPublicationPage, isFirstAuthor } from "../lib/utils";
 
 export default function Publications() {
   const [filter, setFilter] = useState("All");
@@ -54,6 +15,8 @@ export default function Publications() {
     if (filter === "All") return publications;
     return publications.filter((p) => p.category === filter);
   }, [filter]);
+
+  const isAllowPage = isAllowPublicationPage();
 
   return (
     <section
@@ -105,11 +68,10 @@ export default function Publications() {
                 key={cat}
                 onClick={() => setFilter(cat)}
                 data-testid={`filter-${cat.toLowerCase().replace(/\s+/g, "-")}`}
-                className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-colors ${
-                  isActive
+                className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-colors ${isActive
                     ? "bg-slate-900 text-white border-slate-900"
                     : "bg-white text-slate-700 border-slate-200 hover:border-slate-300 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -121,84 +83,87 @@ export default function Publications() {
         <div className="mt-10 flex flex-col gap-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((pub, idx) => {
-              const firstAuthor = (pub.authors || "").split(",")[0].trim();
-              const isFirstAuthor =
-                firstAuthor.toLowerCase() === profile.name.toLowerCase();
+              const hasFirstAuthor = isFirstAuthor(pub);
 
               return (
-              <motion.article
-                layout
-                key={`${pub.title}-${pub.year}`}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.3, delay: idx * 0.03 }}
-                className={`publication-card group relative flex flex-col sm:flex-row gap-5 sm:gap-6 border bg-white rounded-xl p-5 sm:p-6 hover:-translate-y-[1px] transition-all duration-200 ${
-                  isFirstAuthor
-                    ? "border-amber-300 sm:border-l-4 sm:border-t-0 sm:border-r-0 sm:border-b-0"
-                    : "border-slate-200 hover:border-slate-300"
-                }`}
-                data-testid={`publication-card-${idx}`}
-              >
-                <PublicationThumb pub={pub} idx={idx} />
+                <motion.article
+                  layout
+                  key={`${pub.id}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.3, delay: idx * 0.03 }}
+                  className={`publication-card group relative flex flex-col sm:flex-row gap-5 sm:gap-6 border bg-white rounded-xl p-5 sm:p-6 hover:-translate-y-[1px] transition-all duration-200 ${hasFirstAuthor
+                      ? "border-amber-300 sm:border-l-4 sm:border-t-0 sm:border-r-0 sm:border-b-0"
+                      : "border-slate-200 hover:border-slate-300"
+                    }`}
+                  data-testid={`publication-card-${idx}`}
+                >
+                  <PublicationThumb pub={pub} idx={idx} />
 
-                <div className="flex-1 flex flex-col gap-2 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span
-                      className="popup inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-900 text-white tracking-wide"
-                      data-testid={`pub-venue-${idx}`}
-                      data-title={pub.venue}
-                    >
-                      {pub.venueShort}
-                    </span>
-                    {isFirstAuthor && (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-100 text-amber-800">
-                        First author
+                  <div className="flex-1 flex flex-col gap-2 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span
+                        className="popup inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-900 text-white tracking-wide"
+                        data-testid={`pub-venue-${idx}`}
+                        data-title={pub.venue}
+                      >
+                        {pub.venueShort}
                       </span>
-                    )}
-                    <span className="text-xs text-slate-500 font-medium">
-                      {pub.year}
-                    </span>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
-                      {pub.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 leading-snug tracking-tight">
-                    <RichText>{pub.title}</RichText>
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    <RichText>{formatAuthors(pub.authors)}</RichText>
-                  </p>
-
-                  {Object.keys(pub.links || {}).length > 0 && (
-                    <div className="pub-links flex flex-wrap items-center gap-2 mt-2">
-                      {Object.entries(pub.links).map(([label, url]) => (
-                        <a
-                          key={label}
-                          href={url}
-                          target="_blank"
-                          rel="noreferrer"
-                          data-testid={`pub-link-${idx}-${label.toLowerCase()}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 rounded-md px-2.5 py-1 transition-colors"
-                        >
-                          {label === "PDF" ? (
-                            <FileText size={12} />
-                          ) : label === "arXiv" ? (
-                            <BookOpen size={12} />
-                          ) : label === "Video" ? (
-                            <Youtube size={12} />
-                          ) : (
-                            <ExternalLink size={12} />
-                          )}
-                          {label}
-                        </a>
-                      ))}
+                      {hasFirstAuthor && (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-100 text-amber-800">
+                          First author
+                        </span>
+                      )}
+                      <span className="text-xs text-slate-500 font-medium">
+                        {pub.year}
+                      </span>
+                      <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+                        {pub.category}
+                      </span>
                     </div>
-                  )}
-                </div>
-              </motion.article>
-            );
+
+                    <h3 className="text-base sm:text-lg font-semibold text-slate-900 leading-snug tracking-tight">
+                      {hasFirstAuthor && isAllowPage ? (
+                        <Link to={`/publications/${pub.id}`} rel="noreferrer" className="hover:underline">
+                          <RichText>{clearTextLinks(pub.title)}</RichText>
+                        </Link>
+                      ) : (
+                        <RichText>{pub.title}</RichText>
+                      )}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      <RichText>{formatAuthors(pub.authors)}</RichText>
+                    </p>
+
+                    {Object.keys(pub.links || {}).length > 0 && (
+                      <div className="pub-links flex flex-wrap items-center gap-2 mt-2">
+                        {Object.entries(pub.links).map(([label, url]) => (
+                          <a
+                            key={label}
+                            href={url}
+                            target="_blank"
+                            rel="noreferrer"
+                            data-testid={`pub-link-${idx}-${label.toLowerCase()}`}
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 rounded-md px-2.5 py-1 transition-colors"
+                          >
+                            {label === "PDF" ? (
+                              <FileText size={12} />
+                            ) : label === "arXiv" ? (
+                              <BookOpen size={12} />
+                            ) : label === "Video" ? (
+                              <Youtube size={12} />
+                            ) : (
+                              <ExternalLink size={12} />
+                            )}
+                            {label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.article>
+              );
             })}
           </AnimatePresence>
 

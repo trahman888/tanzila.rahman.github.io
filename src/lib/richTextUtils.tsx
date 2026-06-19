@@ -1,8 +1,10 @@
 const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+const IMAGE_RE = /!\[([^\]]*)\]\(([^)\s]+)\)/g;
 const BOLD_RE = /\*(.*?)\*/g;
 
 export const LINK_CLASS =
   "text-slate-900 underline underline-offset-4 decoration-slate-300 hover:decoration-slate-900 transition-colors";
+export const IMAGE_CLASS = "my-4 max-h-96 object-contain";
 
 export function isExternal(url: string) {
   return (
@@ -58,12 +60,40 @@ export function linkify(text: string) {
   return parts;
 }
 
+export function imageify(text: string) {
+  const parts: Array<React.ReactNode> = [];
+  let lastIndex = 0;
+  let key = 0;
+  let match: RegExpExecArray | null;
+  while ((match = IMAGE_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const [, alt, url] = match;
+    parts.push(
+      <img
+        key={`img-${key++}`}
+        src={url}
+        alt={alt}
+        className={IMAGE_CLASS}
+      />
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
+
 export function makeBoldText(str: string) {
   return `*${str}*`;
 }
 
 export function makeLinkText(label: string, url: string) {
   return `[${label}](${url})`;
+}
+
+export function makeImageText(alt: string, url: string) {
+  return `![${alt}](${url})`;
 }
 
 export function clearTextLinks(str: string) {
@@ -76,6 +106,11 @@ export function clearTextBold(str: string) {
   return str.replace(/\*(.*?)\*/g, "$1");
 }
 
+export function clearTextImages(str: string) {
+  // Remove markdown image syntax to avoid conflicts with our own image handling.
+  return str.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, "$1");
+}
+
 export function clearRich(str: string) {
-  return clearTextLinks(clearTextBold(str));
+  return clearTextLinks(clearTextBold(clearTextImages(str)));
 }

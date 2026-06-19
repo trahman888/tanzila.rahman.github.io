@@ -1,0 +1,72 @@
+{
+  "seo": {
+    "title": "A Convolutional Temporal Attention Model for Video Understanding",
+    "description": "Introducing a novel convolutional temporal attention model designed to enhance video understanding by effectively capturing temporal dependencies and salient features across video frames, leading to improved performance on various video analysis tasks."
+  },
+  "header": {
+    "title": "A Convolutional Temporal Attention Model for Video Understanding",
+    "tagline": "Enhancing Video Understanding with a Novel Convolutional Temporal Attention Mechanism",
+    "paper": "https://arxiv.org/abs/2406.12345"
+  },
+  "sections": [
+    {
+      "id": "overview",
+      "navLabel": "Overview",
+      "pill": "High‑level overview",
+      "title": "What does this work do?",
+      "blocks": [
+        {
+          "type": "hero-grid",
+          "left": [
+            "Video understanding is a complex task that requires models to capture temporal dependencies and salient features across video frames. Traditional approaches often struggle to effectively model the dynamic nature of video content, leading to suboptimal performance on various video analysis tasks.",
+            "In this work, we propose a novel convolutional temporal attention model that combines convolutional neural networks with a temporal attention mechanism. Our approach enables the model to dynamically focus on relevant regions and time steps, improving its ability to understand and reason about video content."
+          ],
+          "rightPlaceholder": "Hero illustration: input photo on the left, grid of multi‑concept generations on the right."
+        }
+      ]
+    },
+    {
+      "id": "methodology",
+      "navLabel": "Methodology",
+      "pill": "Technical details",
+      "title": "How does it work?",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Our convolutional temporal attention model consists of two main components: a convolutional feature extractor that captures spatial features from individual video frames, and a temporal attention mechanism that models the temporal dependencies across frames. The convolutional feature extractor is designed to capture local spatial information, while the temporal attention mechanism allows the model to focus on relevant time steps and regions in the video, enabling it to effectively understand and analyze video content."
+        },
+        {
+          "type": "text",
+          "text": "We also introduce a novel training strategy that leverages multi-task learning to enhance the model's ability to learn discriminative features. By jointly training the model on multiple video analysis tasks, we encourage it to learn more robust representations that can generalize well across different video understanding scenarios."
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "navLabel": "Results",
+      "pill": "Performance evaluation",
+      "title": "How well does it perform?",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "We evaluate our proposed convolutional temporal attention model on several benchmark video understanding datasets, including ActivityNet and Kinetics. Our model achieves state-of-the-art performance, outperforming existing methods by a significant margin. We also conduct ablation studies to demonstrate the effectiveness of each component of our model, showing that both the convolutional feature extractor and temporal attention mechanism contribute to the overall performance improvements."
+        }
+      ]
+    },
+    {
+      "id": "conclusion",
+      "navLabel": "Conclusion",
+      "pill": "Key takeaways",
+      "title": "What are the implications?",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Our convolutional temporal attention model represents a significant advancement in video understanding, enabling models to better capture temporal dependencies and salient features across video frames. This work opens up new possibilities for developing more sophisticated video analysis systems that can handle complex scenarios and provide more accurate insights into video content."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "text": "Built as an explainer for the paper 'A Convolutional Temporal Attention Model for Video Understanding'."
+  }
+}

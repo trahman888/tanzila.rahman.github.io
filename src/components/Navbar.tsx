@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { profile } from "../data";
+import { Link, useLocation } from "react-router-dom";
 
 const SECTIONS: { id: string; label: string }[] = [
   { id: "about", label: "About" },
@@ -9,7 +10,7 @@ const SECTIONS: { id: string; label: string }[] = [
   { id: "contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ page }: { page?: string }) {
   const [active, setActive] = useState("about");
   const [open, setOpen] = useState(false);
   const [compressed, setCompressed] = useState(() => {
@@ -19,6 +20,25 @@ export default function Navbar() {
       return false;
     }
   });
+
+  const loc = useLocation();
+
+  const scrollTo = useCallback((id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 40;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+    setOpen(false);
+  }, []);
+
+  // get hash id from url and set to scroll to that section, otherwise scroll to top
+  useLayoutEffect(() => {
+    const hash = loc.hash.slice(1);
+    if (hash) {
+      scrollTo(hash);
+    }
+  }, [loc, scrollTo]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,14 +72,7 @@ export default function Navbar() {
     }
   }, [compressed]);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 40;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-    setOpen(false);
-  };
+  const researchSection = SECTIONS.find((s) => s.id === "research");
 
   return (
     <header
@@ -79,22 +92,25 @@ export default function Navbar() {
         </button>
 
         <nav className="hidden md:flex items-center gap-8">
-          {SECTIONS.map((s) => (
+          {page !== "publication" ? SECTIONS.map((s) => (
             <button
               key={s.id}
               onClick={() => scrollTo(s.id)}
               data-testid={`nav-${s.id}-link`}
-              className={`text-sm font-medium transition-colors ${
-                active === s.id
+              className={`text-sm font-medium transition-colors ${active === s.id
                   ? "text-slate-900"
                   : "text-slate-500 hover:text-slate-900"
-              }`}
+                }`}
             >
               {s.label}
               {active === s.id && (
                 <span className="block h-px bg-slate-900 mt-1" />
               )}
             </button>
+          )) : SECTIONS.map((s) => (
+            <Link key={s.id} to={`/#${s.id}`} className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+              {s.label}
+            </Link>
           ))}
           <button
             onClick={() => setCompressed((c) => !c)}
@@ -129,17 +145,20 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-slate-200 bg-white" data-testid="nav-mobile-menu">
           <div className="max-w-5xl mx-auto px-6 py-3 flex flex-col">
-            {SECTIONS.map((s) => (
+            {page !== "publication" ? SECTIONS.map((s) => (
               <button
                 key={s.id}
                 onClick={() => scrollTo(s.id)}
                 data-testid={`nav-mobile-${s.id}-link`}
-                className={`text-left py-3 text-sm font-medium border-b border-slate-100 last:border-0 ${
-                  active === s.id ? "text-slate-900" : "text-slate-600"
-                }`}
+                className={`text-left py-3 text-sm font-medium border-b border-slate-100 last:border-0 ${active === s.id ? "text-slate-900" : "text-slate-600"
+                  }`}
               >
                 {s.label}
               </button>
+            )) : SECTIONS.map((s) => (
+              <Link key={s.id} to={`/#${s.id}`} className="text-left py-3 text-sm font-medium border-b border-slate-100 last:border-0 text-slate-600 hover:text-slate-900 transition-colors">
+                {s.label}
+              </Link>
             ))}
           </div>
         </div>

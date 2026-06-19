@@ -1,0 +1,32 @@
+{
+  "seo": {
+    "title": "Make a Story - Explainer",
+    "description": "An explainer for the paper 'Make a Story: A Neural Approach to Story Generation'"
+  },
+  "header": {
+    "title": "Make a Story",
+    "tagline": "A Neural Approach to Story Generation",
+    "paper": "https://arxiv.org/abs/2406.12345"
+  },
+  "sections": [
+    {
+      "id": "overview",
+      "navLabel": "Overview",
+      "pill": "High‑level overview",
+      "title": "What does this work do?",
+      "blocks": [
+        {
+          "type": "hero-grid",
+          "left": [
+            "Story generation is a complex task that requires models to understand narrative structure, character development, and thematic coherence. Traditional approaches to story generation often struggle to produce coherent and engaging narratives, especially when dealing with longer stories that require maintaining consistency across multiple plot points.",
+            "In this work, we introduce 'Make a Story', a neural approach to story generation that leverages a combination of transformer-based architectures and narrative planning techniques. Our model is designed to generate coherent and engaging stories by effectively capturing the underlying narrative structure and character interactions. We demonstrate the effectiveness of our approach through extensive experiments on benchmark story generation datasets, showing significant improvements in both coherence and creativity compared to existing methods."
+          ],
+          "rightPlaceholder": "Hero illustration: input photo on the left, grid of multi‑concept generations on the right."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "text": "Built as an explainer for the paper 'Make a Story: A Neural Approach to Story Generation'."
+  }
+}

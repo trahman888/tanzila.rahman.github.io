@@ -1,0 +1,31 @@
+{
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "header": {
+    "title": "",
+    "tagline": "",
+    "paper": ""
+  },
+  "sections": [
+    {
+      "id": "overview",
+      "navLabel": "Overview",
+      "pill": "High‑level overview",
+      "title": "What does this work do?",
+      "blocks": [
+        {
+          "type": "hero-grid",
+          "left": [
+            ""
+          ],
+          "rightPlaceholder": "Hero illustration: input photo on the left, grid of multi‑concept generations on the right."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "text": ""
+  }
+}

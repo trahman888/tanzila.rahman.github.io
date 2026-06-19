@@ -1,0 +1,52 @@
+{
+  "seo": {
+    "title": "Visual Concept-driven Image Generation – Explainer",
+    "description": "Single-page explainer for the paper 'Visual Concept-driven Image Generation with Text-to-Image Diffusion Model'."
+  },
+  "header": {
+    "title": "Visual Concept‑Driven Image Generation",
+    "tagline": "Personalizing text‑to‑image diffusion models with multiple interacting concepts.",
+    "paper": "Visual Concept‑driven Image Generation with Text‑to‑Image Diffusion Model"
+  },
+  "sections": [
+    {
+      "id": "overview",
+      "navLabel": "Overview",
+      "pill": "High‑level overview",
+      "title": "What does this work do?",
+      "blocks": [
+        {
+          "type": "hero-grid",
+          "left": [
+            "Modern diffusion models can generate high‑quality images from text, but they struggle when you want several user‑specific concepts in the same scene.",
+            "This work introduces a visual concept‑driven personalization framework that learns separate concepts from a few example images and composes them in new scenes using text prompts."
+          ],
+          "rightPlaceholder": "Hero illustration: input photo on the left, grid of multi‑concept generations on the right."
+        }
+      ]
+    },
+
+    { "id": "problem",
+      "navLabel": "Problem",
+      "pill": "Motivation",
+      "title": "The problem: multiple interacting concepts",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Personalization methods usually learn one concept at a time and often fail when multiple concepts must appear together and interact naturally."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Handling concepts that share one training image, such as a person and their background.",
+            "Combining concepts learned from different images into one coherent scene.",
+            "Maintaining identity and style for up to three concepts across many generations."
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "text": "Built as an explainer for the paper 'Visual Concept‑driven Image Generation with Text‑to‑Image Diffusion Model'."
+  }
+}

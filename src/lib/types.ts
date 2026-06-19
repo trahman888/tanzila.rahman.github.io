@@ -37,7 +37,68 @@ export interface NewsItem {
   };
 }
 
+interface PublicationSectionBlockHeroGrid {
+  type: "hero-grid";
+  left: string[];
+  rightPlaceholder: string;
+}
+
+interface PublicationSectionBlockText {
+  type: "text";
+  text: string;
+}
+
+interface PublicationSectionBlockList {
+  type: "list";
+  items?: string[];
+}
+
+interface PublicationSectionBlockGallery {
+  type: "gallery";
+  items?: {
+    title: string;
+    description: string;
+  }[];
+}
+
+interface PublicationSectionBlockComparison {
+  type: "comparison";
+  columns?: {
+    title: string;
+    items?: string[];
+  }[];
+}
+
+export type PublicationSectionBlock =
+  | PublicationSectionBlockHeroGrid
+  | PublicationSectionBlockText
+  | PublicationSectionBlockList
+  | PublicationSectionBlockGallery
+  | PublicationSectionBlockComparison;
+
+export interface PublicationSection {
+  id: string;
+  navLabel: string;
+  pill: string;
+  title: string;
+  blocks?: PublicationSectionBlock[];
+  // ... keep the rest of sections (method, figures, comparison, applications, limitations)
+}
+
+export interface PublicationPageContent {
+  seo?: {
+    title: string;
+    description: string;
+  };
+  header?: any; // can be further typed if needed
+  sections?: PublicationSection[];
+  footer?: {
+    text: string;
+  }
+}
+
 export interface Publication {
+  id: string;
   title: string;
   authors: string;
   venue: string;
@@ -48,6 +109,7 @@ export interface Publication {
   links: {
     [key: string]: string; // e.g. { arXiv: "url", PDF: "url" }
   };
+  pageContent?: PublicationPageContent | null; // optional field for abstract, bibtex, etc. to be shown on publication page
 }
 
 // Publication category as enum for better type safety in filtering and display.

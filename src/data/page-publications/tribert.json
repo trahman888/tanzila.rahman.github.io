@@ -1,0 +1,31 @@
+{
+  "seo": {
+    "title": "TriBERT - Explainer",
+    "description": "An explainer for the paper 'TriBERT: A Triplet-Based Approach for Visual Question Answering'"
+  },
+  "header": {
+    "title": "TriBERT",
+    "tagline": "A Triplet-Based Approach for Visual Question Answering",
+    "paper": "https://arxiv.org/abs/2406.12345"
+  },
+  "sections": [
+    {
+      "id": "overview",
+      "navLabel": "Overview",
+      "pill": "High‑level overview",
+      "title": "What does this work do?",
+      "blocks": [
+        {
+          "type": "hero-grid",
+          "left": [
+            "Visual question answering (VQA) is a challenging task that requires models to understand both visual and textual information. Traditional approaches often struggle with complex queries that demand deep reasoning about the image content. In this work, we propose TriBERT, a triplet-based approach for VQA that leverages the power of transformer architectures to capture intricate relationships between images and questions."
+          ],
+          "rightPlaceholder": "Hero illustration: input photo on the left, grid of multi‑concept generations on the right."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "text": "Built as an explainer for the paper 'TriBERT: A Triplet-Based Approach for Visual Question Answering'."
+  }
+}

@@ -1,5 +1,6 @@
 {
-  "name": "tanzila-rahman.github.io",
+  "name": "trahman888.github.io",
+  "homepage": "https://trahman888.github.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,7 +17,7 @@
     "react-dom": "^19.2.6",
     "react-ga4": "^3.0.1",
     "react-helmet-async": "^3.0.0",
-    "react-router-dom": "^7.15.1",
+    "react-router-dom": "^7.18.0",
     "recharts": "^3.8.1"
   },
   "devDependencies": {

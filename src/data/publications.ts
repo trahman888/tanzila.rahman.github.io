@@ -1,7 +1,17 @@
-import { PublicationCategory, type Publication } from "../lib/types";
+import { PublicationCategory, type Publication, type PublicationPageContent } from "../lib/types";
+import visualConceptPageContent from "./page-publications/visual-concept-driven-image-generation.json";
+import makeAStoryPageContent from "./page-publications/make-a-story.json";
+import tribertPageContent from "./page-publications/tribert.json";
+import weaklySupervisedAudioVisualPageContent from "./page-publications/weakly-supervised-audio-visual.json";
+import improvedAttentionVQAPageContent from "./page-publications/an-improved-attention-for-visual-question-answering.json";
+import watchListenAndTellPageContent from "./page-publications/watch-listen-and-tell.json";
+import videoBasedPersonReIdentificationPageContent from "./page-publications/video-based-person-re-identification.json";
+import convolutionalTemporalAttentionModelPageContent from "./page-publications/convolutional-temporal-attention-model.json";
+import personReIdentificationPageContent from "./page-publications/person-re-identification-by-localizing-discriminative-regions.json";
 
 export const publications: Publication[] = [
   {
+    id: "to-sink-or-not-to-sink",
     title:
       "To Sink or Not to Sink: Visual Information Pathways in Large Vision-Language Models",
     authors:
@@ -16,6 +26,7 @@ export const publications: Publication[] = [
     },
   },
   {
+    id: "mmfactory",
     title: "MMFactory: A Universal Solution Search Engine for Vision-Language Tasks. (under review)",
     authors: "Wan-Cyuan Fan, Tanzila Rahman, Leonid Sigal",
     venue: "UBC, Vector Institute for AI, CIFAR AI Chair",
@@ -28,6 +39,7 @@ export const publications: Publication[] = [
     },
   },
   {
+    id: "visual-concept-driven-image-generation",
     title: "Visual Concept-driven Image Generation with Text-to-Image Diffusion Model",
     authors: "Tanzila Rahman, Shweta Mahajan, Hsin-Ying Lee, Jian Ren, Sergey Tulyakov, Leonid Sigal",
     venue: "Conference on Robot Vision",
@@ -38,8 +50,10 @@ export const publications: Publication[] = [
     links: {
       arXiv: "https://arxiv.org/abs/2402.11487",
     },
+    pageContent: visualConceptPageContent as PublicationPageContent,
   },
   {
+    id: "prompting-hard-or-hardly-prompting",
     title:
       "Prompting Hard or Hardly Prompting: Prompt Inversion for Text-to-Image Diffusion Models",
     authors: "Shweta Mahajan, Tanzila Rahman, Kwang Moo Yi, Leonid Sigal",
@@ -53,6 +67,7 @@ export const publications: Publication[] = [
     },
   },
   {
+    id: "make-a-story",
     title:
       "Make-A-Story: Visual Memory Conditioned Consistent Story Generation",
     authors:
@@ -66,8 +81,10 @@ export const publications: Publication[] = [
       PDF: "https://openaccess.thecvf.com/content/CVPR2023/papers/Rahman_Make-a-Story_Visual_Memory_Conditioned_Consistent_Story_Generation_CVPR_2023_paper.pdf",
       Video: "https://www.youtube.com/watch?v=BXZ7LAg1sP8&t=58s",
     },
+    pageContent: makeAStoryPageContent as PublicationPageContent,
   },
   {
+    id: "tribert",
     title: "TriBERT: Human-centric Audio-visual Representation Learning",
     authors: "Tanzila Rahman, Mengyu Yang, Leonid Sigal",
     venue: "Neural Information Processing Systems",
@@ -78,8 +95,10 @@ export const publications: Publication[] = [
     links: {
       arXiv: "https://arxiv.org/abs/2110.13412",
     },
+    pageContent: tribertPageContent as PublicationPageContent,
   },
   {
+    id: "weakly-supervised-audio-visual",
     title:
       "Weakly-Supervised Audio-Visual Sound Source Detection and Separation",
     authors: "Tanzila Rahman, Leonid Sigal",
@@ -92,8 +111,10 @@ export const publications: Publication[] = [
       arXiv: "https://arxiv.org/abs/2104.02606",
       Video: "https://www.youtube.com/watch?v=ep6vLty85NU",
     },
+    pageContent: weaklySupervisedAudioVisualPageContent as PublicationPageContent,
   },
   {
+    id: "an-improved-attention-for-visual-question-answering",
     title: "An Improved Attention for Visual Question Answering",
     authors: "Tanzila Rahman, Shih-Han Chou, Leonid Sigal, Giuseppe Carenini",
     venue: "4th Multimodal Learning and Applications Workshop (in conjunction with CVPR)",
@@ -105,8 +126,10 @@ export const publications: Publication[] = [
       PDF: "https://openaccess.thecvf.com/content/CVPR2021W/MULA/papers/Rahman_An_Improved_Attention_for_Visual_Question_Answering_CVPRW_2021_paper.pdf",
       Video: "https://www.youtube.com/watch?v=5XfwBAxL9SQ",
     },
+    pageContent: improvedAttentionVQAPageContent as PublicationPageContent,
   },
   {
+    id: "watch-listen-and-tell",
     title:
       "Watch, Listen and Tell: Multi-modal Weakly Supervised Dense Event Captioning",
     authors: "Tanzila Rahman, Bicheng Xu, Leonid Sigal",
@@ -118,8 +141,10 @@ export const publications: Publication[] = [
     links: {
       arXiv: "https://arxiv.org/abs/1909.09944",
     },
+    pageContent: watchListenAndTellPageContent as PublicationPageContent,
   },
   {
+    id: "video-based-person-re-identification",
     title:
       "Video-based Person Re-identification using Refined Attention Networks",
     authors: "Tanzila Rahman, Mrigank Rochan, Yang Wang",
@@ -131,8 +156,10 @@ export const publications: Publication[] = [
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_refine.pdf",
     },
+    pageContent: videoBasedPersonReIdentificationPageContent as PublicationPageContent,
   },
   {
+    id: "non-local-attentive-temporal-network",
     title:
     "Non-local Attentive Temporal Network for Video-Based Person Re-identification",
     authors: "Shuangqun Rao, Pengfei Cao, Tanzila Rahman, Mrigank Rochan, Yang Wang",
@@ -146,6 +173,7 @@ export const publications: Publication[] = [
     },
   },
   {
+    id: "convolutional-temporal-attention-model",
     title: "Convolutional Temporal Attention Model for Video-Based Person Re-identification",
     authors: "Tanzila Rahman, Mrigank Rochan, Yang Wang",
     venue: "IEEE International Conference on Multimedia and Expo",
@@ -156,8 +184,10 @@ export const publications: Publication[] = [
     links: {
       arXiv: "https://arxiv.org/abs/1904.04492",
     },
+    pageContent: convolutionalTemporalAttentionModelPageContent as PublicationPageContent,
   },
   {
+    id: "membership-inference-attack",
     title:
       "Membership Inference Attack against Differentially Private Deep Learning Model",
     authors:
@@ -172,6 +202,7 @@ export const publications: Publication[] = [
     },
   },
   {
+    id: "person-re-identification-by-localizing-discriminative-regions",
     title: "Person Re-Identification by Localizing Discriminative Regions",
     authors: "Tanzila Rahman, Mrigank Rochan, Yang Wang",
     venue: "The 28th British Machine Vision Conference",
@@ -182,6 +213,7 @@ export const publications: Publication[] = [
     links: {
       PDF: "http://www.cs.umanitoba.ca/~ywang/papers/bmvc17_personid.pdf",
     },
+    pageContent: personReIdentificationPageContent as PublicationPageContent,
   },
 ];
 

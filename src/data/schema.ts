@@ -27,7 +27,6 @@ export function generateSchema() {
     "sameAs": [
       profile.links.googleScholar,
       profile.links.linkedin,
-      profile.links.oldSite
     ].filter(Boolean) // Cleans out any empty links safely
   };
 
