@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import type { PublicationSection } from "../lib/types";
+import type { Publication, PublicationSection } from "../lib/types";
 import { RichText } from "./ui/RichText";
+import { PublicationThumb } from "./PublicationThumb";
 
-export default function Section({ section, visible }: { section: PublicationSection; visible: boolean }) {
+export default function Section({ publication, section, visible }: { publication: Publication; section: PublicationSection; visible: boolean }) {
   const { id, pill, title, blocks = [] } = section;
 
   return (
-    <section id={id} className={`bg-pageBgAlt p-[20px_18px] rounded-lg border border-pageBorder ${visible ? 'block' : 'hidden'}`}>
+    <section id={id} className={`publication-card bg-white rounded-xl p-5 sm:p-6 border border-slate-200 hover:border-slate-300 ${visible ? 'block' : 'hidden'}`}>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -14,10 +15,13 @@ export default function Section({ section, visible }: { section: PublicationSect
         transition={{ duration: 0.5 }}
         className="flex flex-col gap-3"
       >
-        {pill && <span className="inline-block px-2 py-0.5 rounded-full bg-pageAccentSoft text-pageAccent text-[0.75rem] uppercase tracking-[0.05em] mb-1">
-          {pill}
-        </span>}
-        {title && <h2 className="mt-0 mb-2 text-xl">{title}</h2>}
+        {pill && (
+          <span className="inline-block text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+            {pill}
+          </span>
+        )}
+
+        {title && <h2 className="mt-0 mb-2 text-xl tracking-tight text-slate-900">{title}</h2>}
 
         {blocks.map((block, idx) => {
           switch (block.type) {
@@ -48,6 +52,7 @@ export default function Section({ section, visible }: { section: PublicationSect
                   </div>
                   <div className="rounded-md border border-dashed border-pageBorder
           bg-[#f3f6ff] p-2.5 text-[0.85rem] text-pageMuted">
+                    <PublicationThumb pub={publication} idx={0} shape="landscape" />
                     {block.rightPlaceholder ||
                       "Hero illustration placeholder"}
                   </div>

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { profile } from "../data";
-import { Link, useLocation } from "react-router-dom";
+import { useCompressed } from "../contexts/compress-context.ts";
 
 const SECTIONS: { id: string; label: string }[] = [
   { id: "about", label: "About" },
@@ -13,15 +14,9 @@ const SECTIONS: { id: string; label: string }[] = [
 export default function Navbar({ page }: { page?: string }) {
   const [active, setActive] = useState("about");
   const [open, setOpen] = useState(false);
-  const [compressed, setCompressed] = useState(() => {
-    try {
-      return localStorage.getItem("siteCompressed") === "1";
-    } catch {
-      return false;
-    }
-  });
 
   const loc = useLocation();
+  const { compressed, toggleCompressed } = useCompressed();
 
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -60,22 +55,6 @@ export default function Navbar({ page }: { page?: string }) {
     });
     return () => observer.disconnect();
   }, []);
-
-  // apply compressed class to root element when changed
-  useEffect(() => {
-    try {
-      const root = document.documentElement;
-      if (compressed) {
-        root.classList.add("compressed");
-        localStorage.setItem("siteCompressed", "1");
-      } else {
-        root.classList.remove("compressed");
-        localStorage.removeItem("siteCompressed");
-      }
-    } catch {
-      // ignore
-    }
-  }, [compressed]);
 
   return (
     <header
@@ -122,7 +101,7 @@ export default function Navbar({ page }: { page?: string }) {
             </Link>
           ))}
           <button
-            onClick={() => setCompressed((c) => !c)}
+            onClick={toggleCompressed}
             className="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200"
             aria-pressed={compressed}
             title={compressed ? "Disable compact view" : "Enable compact view"}

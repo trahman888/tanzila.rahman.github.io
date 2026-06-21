@@ -1,13 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { UserCheck } from "lucide-react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NoticeBar from "../components/NoticeBar";
 import Section from "../components/Section";
 import Publications from "../components/Publications";
+import { formatAuthors, getPublicationContent } from "../lib/utils";
+import { RichText } from "../components/ui/RichText";
+import { PublicationLinks } from "../components/PublicationLinks.tsx";
+import { useCompressed } from "../contexts/compress-context.ts";
 import type { Publication } from "../lib/types";
-import { getPublicationContent } from "../lib/utils";
 
 export default function Publication() {
   const { publicationId } = useParams();
@@ -15,6 +19,7 @@ export default function Publication() {
   const { seo, header, sections, footer } = publication?.pageContent || {};
   const [activeSectionId, setActiveSectionId] = useState<string>(sections?.[0]?.id || "");
   const title = `${(seo?.title || publication?.title || "Publication")} · ${publication?.venue || 'Venue'} (${publication?.year || 'Year'})`;
+  const { compressed } = useCompressed();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -37,65 +42,43 @@ export default function Publication() {
               <meta property="og:type" content="website" />
             </Helmet>
             <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-28">
-              <header className="flex flex-col gap-4 mb-8 pb-6 border-b border-pageBorder
-         md:flex-row md:items-center md:justify-between">
-                <div className="title-block">
-                  <h1 className="text-3xl font-bold mb-4">{header?.title}</h1>
-                  {header?.tagline && (
-                    <p className="m-0 text-pageMuted">{header.tagline}</p>
-                  )}
-                  <p className="text-lg text-slate-600 mb-6">{publication?.venue} ({publication?.year})</p>
+              <header className="flex flex-col gap-4 mb-8 pb-6">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span
+                    className="popup inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-900 text-white tracking-wide"
+                    data-testid={`pub-venue-${publicationId}`}
+                    data-title={publication?.venue}
+                  >
+                    {compressed ? publication?.venueShort : publication?.venue}
+                  </span>
+                  <span className="text-xs text-slate-500 font-medium">
+                    {publication?.year}
+                  </span>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+                    {publication?.category}
+                  </span>
                 </div>
-                <div className="text-left text-[0.9rem]">
-                  {header?.paper && (
-                    <p className="m-0">
-                      <strong>Paper:</strong>{" "}
-                      <em>{header.paper}</em>
-                    </p>
+                <div className="title-block">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">{header?.title}</h1>
+                  {header?.tagline && (
+                    <p className="text-base text-slate-600 leading-relaxed max-w-2xl">{header.tagline}</p>
                   )}
-                  {publication.authors && (
-                    <p className="m-0">
-                      <strong>Authors:</strong> {publication.authors}
-                    </p>
-                  )}
-                  {publication.links && (
-                    <p className="m-0">
-                      <strong>Link:</strong>{" "}
-                      {publication.links.arXiv && (
-                        <a
-                          href={publication.links.arXiv}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {publication.links.arXiv}
-                        </a>
-                      )}
-                      {publication.links.PDF && (
-                        <a
-                          href={publication.links.PDF}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {publication.links.PDF}
-                        </a>
-                      )}
-                      {publication.links.Video && (
-                        <a
-                          href={publication.links.Video}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {publication.links.Video}
-                        </a>
-                      )}
-                    </p>
-                  )}
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    <UserCheck size={14} className="inline-block mr-1" />
+                    <RichText>{formatAuthors(publication?.authors)}</RichText>
+                  </p>
+                </div>
+                <div className="text-[0.9rem]">
+                  <PublicationLinks publication={publication} idx={0} />
                 </div>
               </header>
 
               {/* Nav → sets activeSectionId, no href / scroll */}
-              <nav className="my-4 mb-8 py-2 border-b border-pageBorder sticky top-0 bg-pageBg z-10">
-                <div className="flex flex-wrap gap-3 text-[0.9rem]">
+              <nav className={[
+                "my-4 mb-8 py-2 border-b border-slate-300 sticky bg-white z-10",
+                compressed ? "top-12" : "top-16",
+              ].join(" ")}>
+                <div className="flex flex-wrap gap-2">
                   {sections?.map((section) => {
                     const isActive = section.id === activeSectionId;
                     return (
@@ -104,10 +87,10 @@ export default function Publication() {
                         type="button"
                         onClick={() => setActiveSectionId(section.id)}
                         className={[
-                          "px-2 py-1 rounded-full border text-sm transition-colors",
+                          "inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-colors",
                           isActive
-                            ? "bg-pageAccentSoft border-pageAccent text-pageAccent"
-                            : "bg-transparent border-transparent text-pageText hover:bg-pageAccentSoft hover:border-pageAccent",
+                            ? "bg-slate-900 text-white border-slate-900"
+                            : "bg-white text-slate-700 border-slate-200 hover:border-slate-300 hover:text-slate-900",
                         ].join(" ")}
                       >
                         {section.navLabel || section.title}
@@ -119,7 +102,7 @@ export default function Publication() {
 
               <main className="flex flex-col gap-8">
                 {(sections || []).map((section) => (
-                  <Section key={section.id} section={section} visible={section.id === activeSectionId} />
+                  <Section key={section.id} publication={publication} section={section} visible={section.id === activeSectionId} />
                 ))}
               </main>
 

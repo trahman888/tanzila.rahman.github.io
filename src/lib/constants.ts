@@ -1,0 +1,1 @@
+export const LS_SITE_COMPRESSED_KEY = "siteCompressed";

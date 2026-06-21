@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, FileText, BookOpen, Youtube } from "lucide-react";
 import { publications, publicationCategories } from "../data/publications";
-import type { Publication } from "../lib/types";
-import { clearRich, clearTextLinks } from "../lib/richTextUtils";
+import { clearTextLinks } from "../lib/richTextUtils";
 import { RichText } from "./ui/RichText";
 import { Link } from "react-router-dom";
 import { formatAuthors, isAllowPublicationPage, isFirstAuthor } from "../lib/utils";
+import { PublicationThumb } from "./PublicationThumb";
+import { PublicationLinks } from "./PublicationLinks";
 
 export default function Publications() {
   const [filter, setFilter] = useState("All");
@@ -136,31 +136,7 @@ export default function Publications() {
                       <RichText>{formatAuthors(pub.authors)}</RichText>
                     </p>
 
-                    {Object.keys(pub.links || {}).length > 0 && (
-                      <div className="pub-links flex flex-wrap items-center gap-2 mt-2">
-                        {Object.entries(pub.links).map(([label, url]) => (
-                          <a
-                            key={label}
-                            href={url}
-                            target="_blank"
-                            rel="noreferrer"
-                            data-testid={`pub-link-${idx}-${label.toLowerCase()}`}
-                            className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 rounded-md px-2.5 py-1 transition-colors"
-                          >
-                            {label === "PDF" ? (
-                              <FileText size={12} />
-                            ) : label === "arXiv" ? (
-                              <BookOpen size={12} />
-                            ) : label === "Video" ? (
-                              <Youtube size={12} />
-                            ) : (
-                              <ExternalLink size={12} />
-                            )}
-                            {label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
+                    <PublicationLinks publication={pub} idx={idx} />
                   </div>
                 </motion.article>
               );
@@ -175,90 +151,5 @@ export default function Publications() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* -------- Thumbnail -------- */
-
-// A stable hue per publication (based on title hash) for subtle variety
-// without ever drifting from the slate palette.
-function hashHue(str: string) {
-  let h = 0;
-  for (let i = 0; i < str.length; i++) {
-    h = (h << 5) - h + str.charCodeAt(i);
-    h |= 0;
-  }
-  return Math.abs(h);
-}
-
-function PublicationThumb({ pub, idx }: { pub: Publication; idx: number }) {
-  // If a real image is provided, render it.
-  if (pub.image) {
-    return (
-      <div
-        className="pub-thumb relative w-full sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-[16/9] sm:aspect-square flex-shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
-        data-testid={`pub-thumb-${idx}`}
-      >
-        <img
-          src={pub.image}
-          alt={clearRich(pub.title)}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </div>
-    );
-  }
-
-  // Otherwise, render a tasteful placeholder. Uses the venue acronym
-  // (e.g. CVPR, NeurIPS, ICCV) and a subtle deterministic accent.
-  const acronym = (pub.venue || "PUB")
-    .replace(/preprint/i, "arXiv")
-    .replace(/workshop/i, "Wkshp")
-    .trim();
-
-  const palettes = [
-    { from: "#0F172A", to: "#1E293B" }, // slate
-    { from: "#111827", to: "#1F2937" }, // gray
-    { from: "#1E293B", to: "#334155" }, // slate light
-    { from: "#0B1220", to: "#1E293B" }, // deep slate
-  ];
-  const p = palettes[hashHue(pub.title + pub.year) % palettes.length];
-
-  return (
-    <div
-      className="pub-thumb relative w-full sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-[16/9] sm:aspect-square flex-shrink-0 overflow-hidden rounded-lg border border-slate-200"
-      style={{
-        backgroundImage: `linear-gradient(135deg, ${p.from} 0%, ${p.to} 100%)`,
-      }}
-      data-testid={`pub-thumb-placeholder-${idx}`}
-      aria-hidden="true"
-    >
-      {/* dot pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.18]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)",
-          backgroundSize: "10px 10px",
-        }}
-      />
-      {/* corner gloss */}
-      <div
-        className="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-20"
-        style={{ background: "radial-gradient(circle, #ffffff 0%, transparent 60%)" }}
-      />
-
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-2 text-center">
-        <span className="text-white font-bold tracking-tight text-base sm:text-[15px] md:text-base leading-none">
-          {acronym}
-        </span>
-        <span className="mt-1 text-[10px] uppercase tracking-[0.18em] text-slate-300 font-medium">
-          {pub.year}
-        </span>
-      </div>
-
-      {/* bottom rule */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/20" />
-    </div>
   );
 }
