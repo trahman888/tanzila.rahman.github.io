@@ -5,8 +5,7 @@
   },
   "header": {
     "title": "TriBERT",
-    "tagline": "A Triplet-Based Approach for Visual Question Answering",
-    "paper": "https://arxiv.org/abs/2406.12345"
+    "tagline": "A Triplet-Based Approach for Visual Question Answering"
   },
   "sections": [
     {

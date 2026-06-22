@@ -5,8 +5,7 @@
   },
   "header": {
     "title": "Make a Story",
-    "tagline": "A Neural Approach to Story Generation",
-    "paper": "https://arxiv.org/abs/2406.12345"
+    "tagline": "A Neural Approach to Story Generation"
   },
   "sections": [
     {

@@ -79,8 +79,7 @@ export default function Section({ publication, section, visible }: { publication
                 <div key={idx} className="grid gap-4 mt-3
           grid-cols-[repeat(auto-fit,minmax(240px,1fr))]">
                   {(block.columns || []).map((col, i) => (
-                    <div key={i} className="p-[10px] rounded-md border border-pageBorder
-            bg-[#fafafa] text-[0.9rem]">
+                    <div key={i} className="p-[10px] rounded-md border border-pageBorder bg-[#fafafa] text-[0.9rem]">
                       <strong>{col.title}</strong>
                       <ul>
                         {(col.items || []).map((item, j) => (

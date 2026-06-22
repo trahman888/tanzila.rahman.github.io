@@ -5,8 +5,7 @@
   },
   "header": {
     "title": "A Convolutional Temporal Attention Model for Video Understanding",
-    "tagline": "Enhancing Video Understanding with a Novel Convolutional Temporal Attention Mechanism",
-    "paper": "https://arxiv.org/abs/2406.12345"
+    "tagline": "Enhancing Video Understanding with a Novel Convolutional Temporal Attention Mechanism"
   },
   "sections": [
     {

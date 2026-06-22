@@ -5,8 +5,7 @@
   },
   "header": {
     "title": "Visual Concept‑Driven Image Generation",
-    "tagline": "Personalizing text‑to‑image diffusion models with multiple interacting concepts.",
-    "paper": "Visual Concept‑driven Image Generation with Text‑to‑Image Diffusion Model"
+    "tagline": "Personalizing text‑to‑image diffusion models with multiple interacting concepts."
   },
   "sections": [
     {
