@@ -64,6 +64,7 @@ def _build_json(author) -> str:
 
     data = {
         "profileUrl": f"https://scholar.google.com/citations?user={AUTHOR_ID}&hl=en",
+        "lastUpdate": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "totals": {
             "citations": int(author.get("citedby", 0)),
             "citationsSince": {"year": since_year, "value": int(author.get("citedby5y", 0))},

@@ -59,6 +59,15 @@ export default function Impact() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
               Citations &amp; reach
+              <small className="block text-sm font-normal text-slate-500 mt-1">
+                Updated on {new Date(scholar.lastUpdate).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric"
+                })}
+              </small>
             </h2>
             <a
               href={scholar.profileUrl}

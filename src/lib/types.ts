@@ -147,6 +147,7 @@ export type CitationTotals = {
 
 export interface Scholar {
   profileUrl: string;
+  lastUpdate: string;
   totals: CitationTotals;
   perYear: PerYearCount[];
 }
