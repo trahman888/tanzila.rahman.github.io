@@ -11,6 +11,19 @@ import personReIdentificationPageContent from "./page-publications/person-re-ide
 
 export const publications: Publication[] = [
   {
+    id: "all-in-one",
+    title: "All in One: A Unified Synthetic Data Pipeline for Multimodal Video Understanding",
+    authors: "Tanzila Rahman, Renjie Liao, Leonid Sigal",
+    venue: "UBC, Vector Institute for AI",
+    venueShort: "UBC",
+    year: 2026,
+    category: PublicationCategory.MultimodalLearning,
+    image: "images/All-in-One.png",
+    links: {
+      arXiv: "https://arxiv.org/abs/2604.12335",
+    },
+  },
+  {
     id: "to-sink-or-not-to-sink",
     title:
       "To Sink or Not to Sink: Visual Information Pathways in Large Vision-Language Models",
