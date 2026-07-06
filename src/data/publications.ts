@@ -18,7 +18,7 @@ export const publications: Publication[] = [
     venueShort: "UBC",
     year: 2026,
     category: PublicationCategory.MultimodalLearning,
-    image: "images/All-in-One.png",
+    image: "images/pub/All-in-One.png",
     links: {
       arXiv: "https://arxiv.org/abs/2604.12335",
     },
@@ -33,7 +33,7 @@ export const publications: Publication[] = [
     venueShort: "ICLR",
     year: 2025,
     category: PublicationCategory.VisionLanguage,
-    image: "images/To-Sink-or-Not-to-Sink.png",
+    image: "images/pub/To-Sink-or-Not-to-Sink.png",
     links: {
       arXiv: "https://arxiv.org/abs/2510.08510",
     },
@@ -46,7 +46,7 @@ export const publications: Publication[] = [
     venueShort: "UBC",
     year: 2025,
     category: PublicationCategory.VisionLanguage,
-    image: "images/MMFactory.png",
+    image: "images/pub/MMFactory.png",
     links: {
       Project: "https://davidhalladay.github.io/mmfactory_demo/",
     },
@@ -59,7 +59,7 @@ export const publications: Publication[] = [
     venueShort: "CRV",
     year: 2025,
     category: PublicationCategory.GenerativeAI,
-    image: "images/visual-concept.png",
+    image: "images/pub/visual-concept.png",
     links: {
       arXiv: "https://arxiv.org/abs/2402.11487",
     },
@@ -104,7 +104,7 @@ export const publications: Publication[] = [
     venueShort: "NeurIPS",
     year: 2021,
     category: PublicationCategory.MultimodalLearning,
-    image: "images/TriBERT.png",
+    image: "images/pub/TriBERT.png",
     links: {
       arXiv: "https://arxiv.org/abs/2110.13412",
     },
@@ -119,7 +119,7 @@ export const publications: Publication[] = [
     venueShort: "ICME (Oral presentation)",
     year: 2021,
     category: PublicationCategory.MultimodalLearning,
-    image: "images/Weakly-Supervised.png",
+    image: "images/pub/Weakly-Supervised.png",
     links: {
       arXiv: "https://arxiv.org/abs/2104.02606",
       Video: "https://www.youtube.com/watch?v=ep6vLty85NU",
@@ -134,7 +134,7 @@ export const publications: Publication[] = [
     venueShort: "CVPR Workshop",
     year: 2021,
     category: PublicationCategory.VisionLanguage,
-    image: "images/Visual-Question-Answering.png",
+    image: "images/pub/Visual-Question-Answering.png",
     links: {
       PDF: "https://openaccess.thecvf.com/content/CVPR2021W/MULA/papers/Rahman_An_Improved_Attention_for_Visual_Question_Answering_CVPRW_2021_paper.pdf",
       Video: "https://www.youtube.com/watch?v=5XfwBAxL9SQ",
@@ -150,7 +150,7 @@ export const publications: Publication[] = [
     venueShort: "ICCV",
     year: 2019,
     category: PublicationCategory.MultimodalLearning,
-    image: "images/Watch-Listen-and-Tell.png",
+    image: "images/pub/Watch-Listen-and-Tell.png",
     links: {
       arXiv: "https://arxiv.org/abs/1909.09944",
     },
@@ -165,7 +165,7 @@ export const publications: Publication[] = [
     venueShort: "AVSS",
     year: 2019,
     category: PublicationCategory.ComputerVision,
-    image: "images/Video-based-Person-Re-identification.png",
+    image: "images/pub/Video-based-Person-Re-identification.png",
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_refine.pdf",
     },
@@ -180,7 +180,7 @@ export const publications: Publication[] = [
     venueShort: "AVSS",
     year: 2019,
     category: PublicationCategory.ComputerVision,
-    image: "images/Non-local-Attentive.png",
+    image: "images/pub/Non-local-Attentive.png",
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_nonlocal.pdf"
     },
@@ -209,7 +209,7 @@ export const publications: Publication[] = [
     venueShort: "TDP",
     year: 2018,
     category: PublicationCategory.MachineLearning,
-    image: "images/Membership-Inference-Attack.png",
+    image: "images/pub/Membership-Inference-Attack.png",
     links: {
       PDF: "http://www.tdp.cat/issues16/tdp.a289a17.pdf",
     },
