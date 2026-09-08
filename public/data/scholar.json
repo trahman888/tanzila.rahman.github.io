@@ -1,16 +1,16 @@
 {
   "profileUrl": "https://scholar.google.com/citations?user=7GKKBLkAAAAJ&hl=en",
-  "lastUpdate": "2026-07-29T03:00:49.059990+00:00",
+  "lastUpdate": "2026-09-08T07:20:33.382638+00:00",
   "totals": {
-    "citations": 1082,
+    "citations": 1101,
     "citationsSince": {
       "year": 2022,
-      "value": 896
+      "value": 916
     },
     "hIndex": 12,
     "hIndexSince": {
       "year": 2022,
-      "value": 11
+      "value": 12
     },
     "i10Index": 15,
     "i10IndexSince": {
@@ -20,12 +20,8 @@
   },
   "perYear": [
     {
-      "year": 2013,
-      "count": 3
-    },
-    {
       "year": 2014,
-      "count": 10
+      "count": 9
     },
     {
       "year": 2015,
@@ -33,31 +29,31 @@
     },
     {
       "year": 2016,
-      "count": 14
+      "count": 13
     },
     {
       "year": 2017,
-      "count": 4
+      "count": 3
     },
     {
       "year": 2018,
-      "count": 19
+      "count": 18
     },
     {
       "year": 2019,
-      "count": 33
+      "count": 34
     },
     {
       "year": 2020,
-      "count": 90
+      "count": 92
     },
     {
       "year": 2021,
-      "count": 113
+      "count": 111
     },
     {
       "year": 2022,
-      "count": 139
+      "count": 144
     },
     {
       "year": 2023,
@@ -69,11 +65,11 @@
     },
     {
       "year": 2025,
-      "count": 193
+      "count": 192
     },
     {
       "year": 2026,
-      "count": 119
+      "count": 136
     }
   ]
 }
