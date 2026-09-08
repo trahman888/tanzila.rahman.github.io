@@ -54,9 +54,11 @@ export default function Publication() {
                   <span className="text-xs text-slate-500 font-medium">
                     {publication?.year}
                   </span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
-                    {publication?.category}
-                  </span>
+                  {publication?.categories.map((cat, i) => (
+                    <span key={i} className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+                      {cat}
+                    </span>
+                  ))}
                 </div>
                 <div className="title-block">
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">{header?.title}</h1>

@@ -108,7 +108,7 @@ export interface Publication {
   venue: string;
   venueShort: string; // e.g. "CVPR" instead of "IEEE Conference on Computer Vision and Pattern Recognition"
   year: number;
-  category: PublicationCategory;
+  categories: PublicationCategory[];
   image?: string; // optional field for publication thumbnail
   links: {
     [key: string]: string; // e.g. { arXiv: "url", PDF: "url" }

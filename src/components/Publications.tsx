@@ -7,13 +7,14 @@ import { Link } from "react-router-dom";
 import { formatAuthors, isAllowPublicationPage, isFirstAuthor } from "../lib/utils";
 import { PublicationThumb } from "./PublicationThumb";
 import { PublicationLinks } from "./PublicationLinks";
+import type { PublicationCategory } from "../lib/types";
 
 export default function Publications() {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState<"All" | PublicationCategory>("All");
 
   const filtered = useMemo(() => {
     if (filter === "All") return publications;
-    return publications.filter((p) => p.category === filter);
+    return publications.filter((p) => p.categories.includes(filter));
   }, [filter]);
 
   const isAllowPage = isAllowPublicationPage();
@@ -62,11 +63,12 @@ export default function Publications() {
           data-testid="publication-filters"
         >
           {publicationCategories.map((cat) => {
-            const isActive = cat === filter;
+            const c = cat as "All" | PublicationCategory;
+            const isActive = c === filter;
             return (
               <button
                 key={cat}
-                onClick={() => setFilter(cat)}
+                onClick={() => setFilter(c)}
                 data-testid={`filter-${cat.toLowerCase().replace(/\s+/g, "-")}`}
                 className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-medium border cursor-pointer transition-colors ${isActive
                   ? "bg-slate-900 text-white border-slate-900"
@@ -118,9 +120,15 @@ export default function Publications() {
                       <span className="text-xs text-slate-500 font-medium">
                         {pub.year}
                       </span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
-                        {pub.category}
-                      </span>
+                      {filter !== "All" ? (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+                          {filter}
+                        </span>
+                      ) : pub.categories.map((cat, i) => (
+                        <span key={i} className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+                          {cat}
+                        </span>
+                      ))}
                     </div>
 
                     <h3 className="text-base sm:text-lg font-semibold text-slate-900 leading-snug tracking-tight">

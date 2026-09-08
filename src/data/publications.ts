@@ -11,13 +11,26 @@ import personReIdentificationPageContent from "./page-publications/person-re-ide
 
 export const publications: Publication[] = [
   {
+    id: "activation-outliers-matter",
+    title: "Activation Outliers Matter: Robust Recovery for Quantized Multimodal LLMs",
+    authors: "Tanzila Rahman, Mehran Taghian Jazi, Yunke Peng, Zhuang Ma, Anandharaju Durai Raju, Yao Wang, Xing Huang, Hei Yi Mak, Shadan Golestan, Hoang Le, Yonghan Dong, Wei Guo, Yaoyuan Wang",
+    venue: "European Conference on Computer Vision",
+    venueShort: "ECCV",
+    year: 2026,
+    categories: [PublicationCategory.MachineLearning, PublicationCategory.MultimodalLearning],
+    image: "images/pub/Activation-Outliers-Matter.png",
+    links: {
+      arXiv: "https://arxiv.org/abs/2608.26581",
+    },
+  },
+  {
     id: "all-in-one",
     title: "All in One: A Unified Synthetic Data Pipeline for Multimodal Video Understanding",
     authors: "Tanzila Rahman, Renjie Liao, Leonid Sigal",
     venue: "UBC, Vector Institute for AI",
     venueShort: "UBC",
     year: 2026,
-    category: PublicationCategory.MultimodalLearning,
+    categories: [PublicationCategory.MultimodalLearning],
     image: "images/pub/All-in-One.png",
     links: {
       arXiv: "https://arxiv.org/abs/2604.12335",
@@ -32,7 +45,7 @@ export const publications: Publication[] = [
     venue: "International Conference on Learning Representations",
     venueShort: "ICLR",
     year: 2025,
-    category: PublicationCategory.VisionLanguage,
+    categories: [PublicationCategory.VisionLanguage],
     image: "images/pub/To-Sink-or-Not-to-Sink.png",
     links: {
       arXiv: "https://arxiv.org/abs/2510.08510",
@@ -45,7 +58,7 @@ export const publications: Publication[] = [
     venue: "UBC, Vector Institute for AI, CIFAR AI Chair",
     venueShort: "UBC",
     year: 2025,
-    category: PublicationCategory.VisionLanguage,
+    categories: [PublicationCategory.VisionLanguage],
     image: "images/pub/MMFactory.png",
     links: {
       Project: "https://davidhalladay.github.io/mmfactory_demo/",
@@ -58,7 +71,7 @@ export const publications: Publication[] = [
     venue: "Conference on Robot Vision",
     venueShort: "CRV",
     year: 2025,
-    category: PublicationCategory.GenerativeAI,
+    categories: [PublicationCategory.GenerativeAI],
     image: "images/pub/visual-concept.png",
     links: {
       arXiv: "https://arxiv.org/abs/2402.11487",
@@ -73,7 +86,7 @@ export const publications: Publication[] = [
     venue: "Conference on Computer Vision and Pattern Recognition",
     venueShort: "CVPR",
     year: 2024,
-    category: PublicationCategory.GenerativeAI,
+    categories: [PublicationCategory.GenerativeAI],
     image: "https://s-mahajan.github.io/images/ph2p_2023.png",
     links: {
       PDF: "https://openaccess.thecvf.com/content/CVPR2024/papers/Mahajan_Prompting_Hard_or_Hardly_Prompting_Prompt_Inversion_for_Text-to-Image_Diffusion_CVPR_2024_paper.pdf",
@@ -88,7 +101,7 @@ export const publications: Publication[] = [
     venue: "Conference on Computer Vision and Pattern Recognition",
     venueShort: "CVPR",
     year: 2023,
-    category: PublicationCategory.GenerativeAI,
+    categories: [PublicationCategory.GenerativeAI],
     image: "https://s-mahajan.github.io/images/cvpr_2023.png",
     links: {
       PDF: "https://openaccess.thecvf.com/content/CVPR2023/papers/Rahman_Make-a-Story_Visual_Memory_Conditioned_Consistent_Story_Generation_CVPR_2023_paper.pdf",
@@ -103,7 +116,7 @@ export const publications: Publication[] = [
     venue: "Neural Information Processing Systems",
     venueShort: "NeurIPS",
     year: 2021,
-    category: PublicationCategory.MultimodalLearning,
+    categories: [PublicationCategory.MultimodalLearning],
     image: "images/pub/TriBERT.png",
     links: {
       arXiv: "https://arxiv.org/abs/2110.13412",
@@ -118,7 +131,7 @@ export const publications: Publication[] = [
     venue: "IEEE International Conference on Multimedia and Expo",
     venueShort: "ICME (Oral presentation)",
     year: 2021,
-    category: PublicationCategory.MultimodalLearning,
+    categories: [PublicationCategory.MultimodalLearning],
     image: "images/pub/Weakly-Supervised.png",
     links: {
       arXiv: "https://arxiv.org/abs/2104.02606",
@@ -133,7 +146,7 @@ export const publications: Publication[] = [
     venue: "4th Multimodal Learning and Applications Workshop (in conjunction with CVPR)",
     venueShort: "CVPR Workshop",
     year: 2021,
-    category: PublicationCategory.VisionLanguage,
+    categories: [PublicationCategory.VisionLanguage],
     image: "images/pub/Visual-Question-Answering.png",
     links: {
       PDF: "https://openaccess.thecvf.com/content/CVPR2021W/MULA/papers/Rahman_An_Improved_Attention_for_Visual_Question_Answering_CVPRW_2021_paper.pdf",
@@ -149,7 +162,7 @@ export const publications: Publication[] = [
     venue: "IEEE/CVF International Conference on Computer Vision",
     venueShort: "ICCV",
     year: 2019,
-    category: PublicationCategory.MultimodalLearning,
+    categories: [PublicationCategory.MultimodalLearning],
     image: "images/pub/Watch-Listen-and-Tell.png",
     links: {
       arXiv: "https://arxiv.org/abs/1909.09944",
@@ -164,7 +177,7 @@ export const publications: Publication[] = [
     venue: "IEEE International Conference on Advanced Video and Signal-based Surveillance",
     venueShort: "AVSS",
     year: 2019,
-    category: PublicationCategory.ComputerVision,
+    categories: [PublicationCategory.ComputerVision],
     image: "images/pub/Video-based-Person-Re-identification.png",
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_refine.pdf",
@@ -179,7 +192,7 @@ export const publications: Publication[] = [
     venue: "IEEE International Conference on Advanced Video and Signal-based Surveillance",
     venueShort: "AVSS",
     year: 2019,
-    category: PublicationCategory.ComputerVision,
+    categories: [PublicationCategory.ComputerVision],
     image: "images/pub/Non-local-Attentive.png",
     links: {
       PDF: "https://www.cs.umanitoba.ca/~ywang/papers/avss19_nonlocal.pdf"
@@ -192,7 +205,7 @@ export const publications: Publication[] = [
     venue: "IEEE International Conference on Multimedia and Expo",
     venueShort: "ICME",
     year: 2019,
-    category: PublicationCategory.ComputerVision,
+    categories: [PublicationCategory.ComputerVision],
     image: "https://mrochan.github.io/images/icme19_img.png",
     links: {
       arXiv: "https://arxiv.org/abs/1904.04492",
@@ -208,7 +221,7 @@ export const publications: Publication[] = [
     venue: "Transactions on Data Privacy (61-79)",
     venueShort: "TDP",
     year: 2018,
-    category: PublicationCategory.MachineLearning,
+    categories: [PublicationCategory.MachineLearning],
     image: "images/pub/Membership-Inference-Attack.png",
     links: {
       PDF: "http://www.tdp.cat/issues16/tdp.a289a17.pdf",
@@ -221,7 +234,7 @@ export const publications: Publication[] = [
     venue: "The 28th British Machine Vision Conference",
     venueShort: "BMVC",
     year: 2017,
-    category: PublicationCategory.ComputerVision,
+    categories: [PublicationCategory.ComputerVision],
     image: "https://mrochan.github.io/images/bmvc17_personid_img.png",
     links: {
       PDF: "http://www.cs.umanitoba.ca/~ywang/papers/bmvc17_personid.pdf",
